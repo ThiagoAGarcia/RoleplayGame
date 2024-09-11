@@ -36,6 +36,4 @@ public class Enano
     {
         return $"El valor de ataque es de: {attack}";
     }
-    
-    public void EquiparItem()
 }
