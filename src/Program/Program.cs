@@ -68,11 +68,14 @@ namespace RoleplayGame
             mago.AgregarHechizo(viento);
 
             // Elf heals
-            elfo.curar(20);
+            elfo.Curar(20);
             Console.WriteLine($"Elfo vida: {elfo.Vida}");
 
             // Wizard attacks Elf
-            elfo.RecibirAtaque(mago.ValorAtaque());
+            elfo.RecibirAtaque(mago.ValorAtaque(), mago.Nombre);
+            Console.WriteLine($"Elfo vida: {elfo.Vida}");
+            
+            elfo.Curar(20);
             Console.WriteLine($"Elfo vida: {elfo.Vida}");
         }
     }

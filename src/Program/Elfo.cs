@@ -1,56 +1,59 @@
 ﻿using System;
 using System.Collections;
 
-namespace RoleplayGame;
-
-public class Elfo
+namespace RoleplayGame
 {
-    public string Nombre { get; set; }
-    public int Vida { get; set; }
-    public int Ataque { get; set; }
-
-    public int vida_inicial; // No inicializar directamente aquí
-
-    public ArrayList Hechizos { get; set; } = new ArrayList();
-    
-    // Constructor para inicializar vida_inicial
-    public Elfo(string nombre, int vida, int ataque)
+    public class Elfo
     {
-        Nombre = nombre;
-        Vida = vida;
-        Ataque = ataque;
-        vida_inicial = vida; // Inicializar vida_inicial con el valor correcto
-    }
+        public string Nombre { get; set; }
+        public int Vida { get; set; }
+        public int Ataque { get; set; }
 
-    public void AgregarHechizo(Hechizo hechizo)
-    {
-        Hechizos.Add(hechizo);
-    }
+        public int vida_inicial; // No inicializar directamente aquí
 
-    public void curar(int curar)
-    {
-        if (Vida + curar > vida_inicial)
+        public ArrayList Hechizos { get; set; } = new ArrayList();
+        
+        // Constructor para inicializar vida_inicial
+        public Elfo(string nombre, int vida, int ataque)
         {
-            Console.WriteLine("Error: no puede curarse más de su vida base.");
+            Nombre = nombre;
+            Vida = vida;
+            Ataque = ataque;
+            vida_inicial = vida; // Inicializar vida_inicial con el valor correcto
         }
-        else
-        {
-            Vida += curar;
-        }
-    }
 
-    public int ValorAtaque()
-    {
-        int valor = Ataque;
-        foreach (Hechizo item in Hechizos)
+        public void AgregarHechizo(Hechizo hechizo)
         {
-            valor += item.Ataque;
+            Hechizos.Add(hechizo);
         }
-        return valor;
-    }
 
-    public void RecibirAtaque(int ataque)
-    {
-        Vida -= ataque;
+        public void Curar(int curar)
+        {
+            if ((Vida + curar) > vida_inicial)
+            {
+                Console.WriteLine($"{Nombre} intentó curarse, pero no puede curarse más de su vida base.");
+            }
+            else
+            {
+                Vida += curar;
+                Console.WriteLine($"{Nombre} se curó {curar} puntos de vida. Vida actual: {Vida}/{vida_inicial}.");
+            }
+        }
+
+        public int ValorAtaque()
+        {
+            int valor = Ataque;
+            foreach (Hechizo item in Hechizos)
+            {
+                valor += item.Ataque;
+            }
+            return valor;
+        }
+
+        public void RecibirAtaque(int ataque, string atacante)
+        {
+            Vida -= ataque;
+            Console.WriteLine($"{Nombre} recibió {ataque} puntos de daño de {atacante}. Vida actual: {Vida}.");
+        }
     }
 }

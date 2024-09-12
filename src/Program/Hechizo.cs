@@ -1,7 +1,8 @@
-﻿namespace RoleplayGame;
-
-public class Hechizo
+﻿namespace RoleplayGame
 {
-    public string Nombre { get; set; }
-    public int Ataque { get; set; }
+    public class Hechizo
+    {
+        public string Nombre { get; set; }
+        public int Ataque { get; set; }
+    }
 }

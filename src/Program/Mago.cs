@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 
 namespace RoleplayGame
 {
@@ -24,9 +25,10 @@ namespace RoleplayGame
             return valor;
         }
 
-        public void RecibirAtaque(int ataque)
+        public void RecibirAtaque(int ataque, string atacante)
         {
             Vida -= ataque;
+            Console.WriteLine($"{Nombre} recibió {ataque} puntos de daño de {atacante}. Vida actual: {Vida}.");
         }
     }
 }
