@@ -20,7 +20,7 @@ namespace RoleplayGame
             int valor = Ataque;
             foreach (Item item in Items)
             {
-                valor += item.Valor;
+                valor += item.Ataque;
             }
             return valor;
         }

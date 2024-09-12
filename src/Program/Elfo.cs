@@ -12,6 +12,7 @@ namespace RoleplayGame
         public int vida_inicial; // No inicializar directamente aquí
 
         public ArrayList Hechizos { get; set; } = new ArrayList();
+        public ArrayList Item { get; set; } = new ArrayList();
         
         // Constructor para inicializar vida_inicial
         public Elfo(string nombre, int vida, int ataque)
@@ -25,6 +26,10 @@ namespace RoleplayGame
         public void AgregarHechizo(Hechizo hechizo)
         {
             Hechizos.Add(hechizo);
+        }
+        public void AgregarItem(Item item)
+        {
+            Item.Add(item);
         }
 
         public void Curar(int curar)
@@ -44,6 +49,10 @@ namespace RoleplayGame
         {
             int valor = Ataque;
             foreach (Hechizo item in Hechizos)
+            {
+                valor += item.Ataque;
+            }
+            foreach (Item item in Item)
             {
                 valor += item.Ataque;
             }

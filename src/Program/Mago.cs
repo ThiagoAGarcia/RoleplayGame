@@ -9,16 +9,28 @@ namespace RoleplayGame
         public int Vida { get; set; }
         public int Ataque { get; set; }
         public ArrayList Hechizos { get; set; } = new ArrayList();
+        
+        public ArrayList Item { get; set; } = new ArrayList();
+
 
         public void AgregarHechizo(Hechizo hechizo)
         {
             Hechizos.Add(hechizo);
         }
+        public void AgregarItem(Item item)
+        {
+            Item.Add(item);
+        }
+        
 
         public int ValorAtaque()
         {
             int valor = Ataque;
             foreach (Hechizo item in Hechizos)
+            {
+                valor += item.Ataque;
+            }
+            foreach (Item item in Item)
             {
                 valor += item.Ataque;
             }
