@@ -1,27 +1,25 @@
-﻿namespace RoleplayGame
+﻿using System.Collections;
+
+namespace RoleplayGame
 {
     public class Mago
     {
         public string Nombre { get; set; }
-
         public int Vida { get; set; }
+        public int Ataque { get; set; }
+        public ArrayList Hechizos { get; set; } = new ArrayList();
 
-        public Array Hechizos
+        public void AgregarHechizo(Hechizo hechizo)
         {
-            get { return this.Hechizos; }
-            set { this.Hechizos = value; }
+            Hechizos.Add(hechizo); // Agregar el objeto completo Hechizo
         }
 
-        public void curar(int curar)
+        public int ValorAtaque()
         {
-            Vida += curar;
-        }
-        public int ValorAtaque (Item ataque)
-        {
-            int valor = 0;
-            foreach (Item item in Hechizos)
+            int valor = Ataque;
+            foreach (Hechizo item in Hechizos)
             {
-                valor += item.Valor;
+                valor += item.Ataque;
             }
             return valor;
         }
@@ -30,7 +28,5 @@
         {
             Vida -= ataque;
         }
-        
     }
 }
-    

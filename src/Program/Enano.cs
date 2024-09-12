@@ -1,28 +1,33 @@
-﻿namespace RoleplayGame;
+﻿using System;
+using System.Collections;
 
-public class Enano
+namespace RoleplayGame
 {
-    public string Nombre { get; set; }
-    
-    public Array Items
+    public class Enano
     {
-        get { return this.Items; }
-        set { this.Items = value; }
-    }
-    public int Vida { get; set; }
-    
-    public int ValorAtaque (Item ataque)
-    {
-        int valor = 0;
-        foreach (Item item in Items)
+        public string Nombre { get; set; }
+        public ArrayList Items { get; set; } = new ArrayList();
+        public int Vida { get; set; }
+        public int Ataque { get; set; }
+        
+        public void AgregarItem(Item item)
         {
-            valor += item.Valor;
+            Items.Add(item);
         }
-        return valor;
-    }
-    
-    public void RecibirAtaque(int ataque)
-    {
-        Vida -= ataque;
+
+        public int ValorAtaque()
+        {
+            int valor = Ataque;
+            foreach (Item item in Items)
+            {
+                valor += item.Valor;
+            }
+            return valor;
+        }
+
+        public void RecibirAtaque(int ataque)
+        {
+            Vida -= ataque;
+        }
     }
 }
