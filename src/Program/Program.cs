@@ -7,13 +7,8 @@ namespace RoleplayGame
     {
         static void Main(string[] args)
         {
-            // Create an Elf
-            Elfo elfo = new Elfo
-            {
-                Nombre = "Galadriel",
-                Vida = 100,
-                Ataque = 10
-            };
+            // Create an Elf with the proper constructor
+            Elfo elfo = new Elfo("Galadriel", 100, 10);
 
             // Create some Items
             Item espada = new Item("Espada", 5);
@@ -30,7 +25,7 @@ namespace RoleplayGame
                 Ataque = 12
             };
 
-            // Add Items to Elf
+            // Add Hechizos to Elf
             elfo.AgregarHechizo(rayo);
             elfo.AgregarHechizo(viento);
 

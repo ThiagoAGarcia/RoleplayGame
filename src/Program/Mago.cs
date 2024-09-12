@@ -11,7 +11,7 @@ namespace RoleplayGame
 
         public void AgregarHechizo(Hechizo hechizo)
         {
-            Hechizos.Add(hechizo); // Agregar el objeto completo Hechizo
+            Hechizos.Add(hechizo);
         }
 
         public int ValorAtaque()
