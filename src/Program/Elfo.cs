@@ -15,12 +15,12 @@ namespace RoleplayGame
         public ArrayList Item { get; set; } = new ArrayList();
         
         // Constructor para inicializar vida_inicial
-        public Elfo(string nombre, int vida, int ataque)
+        public Elfo(string nombre)
         {
             Nombre = nombre;
-            Vida = vida;
-            Ataque = ataque;
-            vida_inicial = vida; // Inicializar vida_inicial con el valor correcto
+            Vida = 200;
+            Ataque = 20;
+            vida_inicial = 200;
         }
 
         public void AgregarHechizo(Hechizo hechizo)

@@ -12,7 +12,13 @@ namespace RoleplayGame
         
         public ArrayList Item { get; set; } = new ArrayList();
 
-
+        public Mago(string nombre)
+        {
+            Nombre = nombre;
+            Vida = 150;
+            Ataque = 20;
+        }
+        
         public void AgregarHechizo(Hechizo hechizo)
         {
             Hechizos.Add(hechizo);

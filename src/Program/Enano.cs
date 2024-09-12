@@ -8,8 +8,15 @@ namespace RoleplayGame
         public string Nombre { get; set; }
         public ArrayList Items { get; set; } = new ArrayList();
         public int Vida { get; set; }
+        
         public int Ataque { get; set; }
         
+        public Enano(string nombre)
+        {
+            Nombre = nombre;
+            Vida = 150;
+            Ataque = 20;
+        }
         public void AgregarItem(Item item)
         {
             Items.Add(item);
