@@ -11,7 +11,7 @@ namespace RoleplayGame
         
         public int Mana { get; set; }
 
-        public int vida_inicial;
+        public int vidaInicial;
         
         public int ManaInicial;
 
@@ -24,7 +24,7 @@ namespace RoleplayGame
             Nombre = nombre;
             Vida = 200;
             Ataque = 20;
-            vida_inicial = 200;
+            vidaInicial = 200;
             Mana = 100;
             ManaInicial = 100;
         }
@@ -52,14 +52,14 @@ namespace RoleplayGame
 
         public void Curar(int curar)
         {
-            if ((Vida + curar) > vida_inicial || curar > 20)
+            if ((Vida + curar) > vidaInicial || curar > 20)
             {
                 Console.WriteLine($"{Nombre} intentó curarse, pero no puede curarse más de su vida base o mas de 20 puntos de vida por turno.");
             }
             else
             {
                 Vida += curar;
-                Console.WriteLine($"{Nombre} se curó {curar} puntos de vida. Vida actual: {Vida}/{vida_inicial}.");
+                Console.WriteLine($"{Nombre} se curó {curar} puntos de vida. Vida actual: {Vida}/{vidaInicial}.");
             }
         }
 
