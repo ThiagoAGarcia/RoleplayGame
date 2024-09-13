@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "src\Library\Library.csproj", "{578B53E9-483C-4853-A614-1530BA7AB91B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7B336D1D-6320-4212-A3AD-D4D6BEB2353C}"
+	ProjectSection(SolutionItems) = preProject
+		MagoTest.cs = MagoTest.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
