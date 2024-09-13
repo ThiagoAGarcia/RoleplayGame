@@ -8,6 +8,10 @@ namespace RoleplayGame
         public string Nombre { get; set; }
         public int Vida { get; set; }
         public int Ataque { get; set; }
+        
+        public int Mana { get; set; }
+
+        public int ManaInicial;
         public ArrayList Hechizos { get; set; } = new ArrayList();
         
         public ArrayList Item { get; set; } = new ArrayList();
@@ -17,6 +21,8 @@ namespace RoleplayGame
             Nombre = nombre;
             Vida = 150;
             Ataque = 20;
+            Mana = 100;
+            ManaInicial = 100;
         }
         
         public void AgregarHechizo(Hechizo hechizo)
@@ -28,19 +34,52 @@ namespace RoleplayGame
             Item.Add(item);
         }
         
+        public void Estudiar(int increment)
+        {
+            ManaInicial += increment;
+        }
 
-        public int ValorAtaque()
+
+        public int ValorAtaque(Hechizo hechizo = null, Item item = null)
         {
             int valor = Ataque;
-            foreach (Hechizo item in Hechizos)
+            
+            if (hechizo != null)
             {
-                valor += item.Ataque;
+                if (Mana >= hechizo.GastoMana)
+                {
+                    Mana -= hechizo.GastoMana;
+                    valor += hechizo.Ataque;
+                }
+                else
+                {
+                    Console.WriteLine($"{Nombre} no tiene suficiente mana para usar el hechizo {hechizo.Nombre}.");
+                }
             }
-            foreach (Item item in Item)
+
+            if (item != null)
             {
-                valor += item.Ataque;
+                
+                foreach (Item i in Item)
+                {
+                    valor += i.Ataque;
+                }
+            
             }
             return valor;
+        }
+
+        public string CargarMana(int mana)
+        {
+            if (mana > ManaInicial)
+            {
+                return ("No se puede cargar mas mana del que el personaje posee");
+            }
+            else
+            {
+                Mana += mana;
+                return ($"Se cargo {mana}");
+            }
         }
 
         public void RecibirAtaque(int ataque, string atacante)

@@ -7,9 +7,9 @@
         public int Defensa { get; set; }
 
         // Items fijos
-        public static Item Espada { get; } = new Item { Nombre = "Espada", Ataque = 30, Defensa = 5 };
+        public static Item Espada { get; } = new Item { Nombre = "Espada", Ataque = 30, Defensa = 0 };
         public static Item Escudo { get; } = new Item { Nombre = "Escudo", Ataque = 10, Defensa = 50 };
-        public static Item Arco { get; } = new Item { Nombre = "Arco", Ataque = 25, Defensa = 10 };
+        public static Item Arco { get; } = new Item { Nombre = "Arco", Ataque = 25, Defensa = 0 };
         public static Item Armadura { get; } = new Item { Nombre = "Armadura", Ataque = 5, Defensa = 40 };
     }
 }
