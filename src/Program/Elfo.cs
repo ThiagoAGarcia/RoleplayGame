@@ -9,7 +9,7 @@ namespace RoleplayGame
         public int Vida { get; set; }
         public int Ataque { get; set; }
 
-        public int vida_inicial; // No inicializar directamente aquí
+        public int vida_inicial;
 
         public ArrayList Hechizos { get; set; } = new ArrayList();
         public ArrayList Item { get; set; } = new ArrayList();
@@ -34,9 +34,9 @@ namespace RoleplayGame
 
         public void Curar(int curar)
         {
-            if ((Vida + curar) > vida_inicial)
+            if ((Vida + curar) > vida_inicial || curar > 20)
             {
-                Console.WriteLine($"{Nombre} intentó curarse, pero no puede curarse más de su vida base.");
+                Console.WriteLine($"{Nombre} intentó curarse, pero no puede curarse más de su vida base o mas de 20 puntos de vida por turno.");
             }
             else
             {
@@ -61,6 +61,12 @@ namespace RoleplayGame
 
         public void RecibirAtaque(int ataque, string atacante)
         {
+            int vida = Vida;
+            foreach (Item item in Item)
+            {
+                vida += item.Defensa;
+            }
+            
             Vida -= ataque;
             Console.WriteLine($"{Nombre} recibió {ataque} puntos de daño de {atacante}. Vida actual: {Vida}.");
         }

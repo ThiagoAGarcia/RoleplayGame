@@ -6,7 +6,7 @@ namespace RoleplayGame
     public class Enano
     {
         public string Nombre { get; set; }
-        public ArrayList Items { get; set; } = new ArrayList();
+        public ArrayList Item { get; set; } = new ArrayList();
         public int Vida { get; set; }
         
         public int Ataque { get; set; }
@@ -19,22 +19,29 @@ namespace RoleplayGame
         }
         public void AgregarItem(Item item)
         {
-            Items.Add(item);
+            Item.Add(item);
         }
 
         public int ValorAtaque()
         {
             int valor = Ataque;
-            foreach (Item item in Items)
+            foreach (Item item in Item)
             {
                 valor += item.Ataque;
             }
             return valor;
         }
 
-        public void RecibirAtaque(int ataque)
+        public void RecibirAtaque(int ataque, string atacante)
         {
+            int vida = Vida;
+            foreach (Item item in Item)
+            {
+                vida += item.Defensa;
+            }
+            
             Vida -= ataque;
+            Console.WriteLine($"{Nombre} recibió {ataque} puntos de daño de {atacante}. Vida actual: {Vida}.");
         }
     }
 }

@@ -4,13 +4,7 @@
     {
         public string Nombre { get; set; }
         public int Ataque { get; set; }
-        private int defensa;
-
-        public int Defensa
-        {
-            get { return defensa; }
-            set { defensa = value; }
-        }
+        public int Defensa { get; set; }
 
         // Items fijos
         public static Item Espada { get; } = new Item { Nombre = "Espada", Ataque = 30, Defensa = 5 };

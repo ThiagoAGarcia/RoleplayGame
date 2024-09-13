@@ -45,6 +45,12 @@ namespace RoleplayGame
 
         public void RecibirAtaque(int ataque, string atacante)
         {
+            int vida = Vida;
+            foreach (Item item in Item)
+            {
+                vida += item.Defensa;
+            }
+            
             Vida -= ataque;
             Console.WriteLine($"{Nombre} recibió {ataque} puntos de daño de {atacante}. Vida actual: {Vida}.");
         }
