@@ -14,8 +14,8 @@ namespace RoleplayGame
         public Enano(string nombre)
         {
             Nombre = nombre;
-            Vida = 150;
-            Ataque = 20;
+            Vida = 250;
+            Ataque = 50;
         }
         public void AgregarItem(Item item)
         {

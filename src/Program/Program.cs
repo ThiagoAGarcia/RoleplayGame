@@ -7,43 +7,44 @@ namespace RoleplayGame
     {
         static void Main(string[] args)
         {
-            // Create an Elf with the proper constructor
-            Elfo elfo = new Elfo("Galadriel");
             
-            
-            // Add Hechizos to Elf
-            elfo.AgregarHechizo(Hechizo.TormentaElectrica);
-            elfo.AgregarHechizo(Hechizo.RayoDeHielo);
-            
-
-            // Add Hechizo to Elf
-            elfo.AgregarHechizo(Hechizo.BolaDeFuego);
-
-            // Create a Dwarf
-            Enano enano = new Enano("Thorin");
-            
-
-            // Add Items to Dwarf
-            enano.AgregarItem(Item.Espada);
-            enano.AgregarItem(Item.Armadura);
-
-            // Create a Wizard
+            Elfo elfo = new Elfo("Legolas");
+            Enano enano = new Enano("Gimli");
             Mago mago = new Mago("Gandalf");
 
-            // Add Hechizos to Wizard
-            mago.AgregarHechizo(Hechizo.RayoDeHielo);
-            mago.AgregarHechizo(Hechizo.BolaDeFuego);
+            // Crear y agregar items
+            Item espada = Item.Espada;
+            Item escudo = Item.Escudo;
+            Item arco = Item.Arco;
+            Item armadura = Item.Armadura;
 
-            // Elf heals
-            elfo.Curar(20);
-            Console.WriteLine($"Elfo vida: {elfo.Vida}");
+            elfo.AgregarItem(arco);
+            elfo.AgregarItem(escudo);
 
-            // Wizard attacks Elf
-            elfo.RecibirAtaque(mago.ValorAtaque(), mago.Nombre);
-            Console.WriteLine($"Elfo vida: {elfo.Vida}");
+            enano.AgregarItem(espada);
+            enano.AgregarItem(armadura);
             
-            elfo.Curar(20);
-            Console.WriteLine($"Elfo vida: {elfo.Vida}");
+            mago.Estudiar(12);
+
+            mago.AgregarItem(espada);
+            mago.AgregarHechizo(Hechizo.BolaDeFuego);
+            mago.AgregarHechizo(Hechizo.RayoDeHielo);
+            
+            Console.WriteLine("\nAtaques y hechizos:");
+            
+            
+            int ataqueElfo = elfo.ValorAtaque(item: arco);
+            enano.RecibirAtaque(ataqueElfo, elfo.Nombre);
+            
+            int ataqueEnano = enano.ValorAtaque();
+            mago.RecibirAtaque(ataqueEnano, enano.Nombre);
+            
+            Hechizo hechizo = Hechizo.BolaDeFuego;
+            int ataqueMago = mago.ValorAtaque(hechizo: hechizo);
+            elfo.RecibirAtaque(ataqueMago, mago.Nombre);
+            elfo.Curar(30);
+           
         }
+        
     }
 }

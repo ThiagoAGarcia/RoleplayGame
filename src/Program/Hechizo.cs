@@ -4,10 +4,12 @@
     {
         public string Nombre { get; set; }
         public int Ataque { get; set; }
+        
+        public int GastoMana { get; set; }
 
         // Hechizos fijos
-        public static Hechizo BolaDeFuego { get; } = new Hechizo { Nombre = "Bola de Fuego", Ataque = 50 };
-        public static Hechizo RayoDeHielo { get; } = new Hechizo { Nombre = "Rayo de Hielo", Ataque = 40 };
-        public static Hechizo TormentaElectrica { get; } = new Hechizo { Nombre = "Tormenta Eléctrica", Ataque = 60 };
+        public static Hechizo BolaDeFuego { get; } = new Hechizo { Nombre = "Bola de Fuego", Ataque = 50, GastoMana = 10};
+        public static Hechizo RayoDeHielo { get; } = new Hechizo { Nombre = "Rayo de Hielo", Ataque = 40, GastoMana = 5 };
+        public static Hechizo TormentaElectrica { get; } = new Hechizo { Nombre = "Tormenta Eléctrica", Ataque = 60, GastoMana = 20 };
     }
 }
