@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using RoleplayGame;
 
 namespace RoleplayGame.Tests
