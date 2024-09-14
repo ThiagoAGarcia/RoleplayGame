@@ -33,7 +33,7 @@ namespace RoleplayGame
             Console.WriteLine("\nAtaques y hechizos:");
             
             
-            int ataqueElfo = elfo.ValorAtaque(item: arco);
+            int ataqueElfo = elfo.ValorAtaque();
             enano.RecibirAtaque(ataqueElfo, elfo.Nombre);
             
             int ataqueEnano = enano.ValorAtaque();

@@ -40,7 +40,7 @@ namespace RoleplayGame
         }
 
 
-        public int ValorAtaque(Hechizo hechizo = null, Item item = null)
+        public int ValorAtaque(Hechizo hechizo = null)
         {
             int valor = Ataque;
             
@@ -56,16 +56,15 @@ namespace RoleplayGame
                     Console.WriteLine($"{Nombre} no tiene suficiente mana para usar el hechizo {hechizo.Nombre}.");
                 }
             }
-
-            if (item != null)
+            else
             {
-                
                 foreach (Item i in Item)
                 {
                     valor += i.Ataque;
                 }
-            
-            }
+               
+            }   
+                
             return valor;
         }
 
