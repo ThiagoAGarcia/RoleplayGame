@@ -11,7 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "src\Library\Libr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7B336D1D-6320-4212-A3AD-D4D6BEB2353C}"
 	ProjectSection(SolutionItems) = preProject
-		MagoTest.cs = MagoTest.cs
+		test\ElfoTests.cs = test\ElfoTests.cs
+		test\EnanoTests.cs = test\EnanoTests.cs
+		test\LibraryTests.csproj = test\LibraryTests.csproj
+		test\MagoTests.cs = test\MagoTests.cs
 	EndProjectSection
 EndProject
 Global
