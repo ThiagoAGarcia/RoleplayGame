@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace RoleplayGame
 {
-    public class Elfo
+    public class Elfo : IPersonaje
     {
         public string Nombre { get; set; }
         public int Vida { get; set; }
@@ -16,7 +16,7 @@ namespace RoleplayGame
         public int ManaInicial;
 
         public ArrayList Hechizos { get; set; } = new ArrayList();
-        public ArrayList Item { get; set; } = new ArrayList();
+        public ArrayList Items { get; set; } = new ArrayList();
         
         // Constructor para inicializar vida_inicial
         public Elfo(string nombre)
@@ -45,9 +45,11 @@ namespace RoleplayGame
         {
             Hechizos.Add(hechizo);
         }
-        public void AgregarItem(Item item)
+
+        public void AgregarItem(ItemAtaque item, ItemDefensa item2)
         {
-            Item.Add(item);
+            Items.Add(item);
+            Items.Add(item2);
         }
 
         public void Curar(int curar)
@@ -81,20 +83,29 @@ namespace RoleplayGame
             }
             else
             {
-                foreach (Item i in Item)
+                foreach (ItemAtaque i in Items)
                 {
                     valor += i.Ataque;
                 }
                
             }
             return valor;
-         
+        }
+
+        public int ValorAtaque()
+        {
+            int valor = Ataque;
+            foreach (ItemAtaque i in Items)
+            {
+                valor += i.Ataque;
+            }
+            return valor;
         }
 
         public void RecibirAtaque(int ataque, string atacante)
         {
             int vida = Vida;
-            foreach (Item item in Item)
+            foreach (ItemDefensa item in Items)
             {
                 vida += item.Defensa;
             }

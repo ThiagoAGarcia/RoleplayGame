@@ -3,8 +3,9 @@ using System.Collections;
 
 namespace RoleplayGame
 {
-    public class Enano
+    public class Enano : IPersonaje
     {
+        private IPersonaje _personajeImplementation;
         public string Nombre { get; set; }
         public ArrayList Item { get; set; } = new ArrayList();
         public int Vida { get; set; }
@@ -17,15 +18,16 @@ namespace RoleplayGame
             Vida = 250;
             Ataque = 50;
         }
-        public void AgregarItem(Item item)
+        public void AgregarItem(ItemAtaque item, ItemDefensa item2)
         {
             Item.Add(item);
+            Item.Add(item2);
         }
 
         public int ValorAtaque()
         {
             int valor = Ataque;
-            foreach (Item item in Item)
+            foreach (ItemAtaque item in Item)
             {
                 valor += item.Ataque;
             }
@@ -35,7 +37,7 @@ namespace RoleplayGame
         public void RecibirAtaque(int ataque, string atacante)
         {
             int vida = Vida;
-            foreach (Item item in Item)
+            foreach (ItemDefensa item in Item)
             {
                 vida += item.Defensa;
             }
