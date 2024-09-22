@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace RoleplayGame
 {
-    public class Elfo : IPersonaje, IElfo
+    public class Elfo : IPersonaje, IElfo, IHechicero
     {
         public string Nombre { get; set; }
         public int Vida { get; set; }
