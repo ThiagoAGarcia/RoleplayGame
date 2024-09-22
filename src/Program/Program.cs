@@ -13,10 +13,10 @@ namespace RoleplayGame
             Mago mago = new Mago("Gandalf");
 
             // Crear y agregar items
-            Item espada = Item.Espada;
-            Item escudo = Item.Escudo;
-            Item arco = Item.Arco;
-            Item armadura = Item.Armadura;
+            ItemAtaque espada = Items.Espada;
+            ItemDefensa escudo = Items.Escudo;
+            ItemAtaque arco = Items.Arco;
+            ItemDefensa armadura = Items.Armadura;
 
             elfo.AgregarItem(arco);
             elfo.AgregarItem(escudo);
