@@ -7,32 +7,32 @@ namespace RoleplayGame
     {
         static void Main(string[] args)
         {
-            
-            Elfo elfo = new Elfo("Legolas");
-            Enano enano = new Enano("Gimli");
-            Mago mago = new Mago("Gandalf");
+            IPersonaje elfo = new Elfo("Legolas");
+            IPersonaje enano = new Enano("Gimli");
+            IPersonaje mago = new Mago("Gandalf");
 
             // Crear y agregar items
-            Item espada = Item.Espada;
-            Item escudo = Item.Escudo;
-            Item arco = Item.Arco;
-            Item armadura = Item.Armadura;
+            ItemAtaque espada = Items.Espada;
+            ItemDefensa escudo = Items.Escudo;
+            ItemAtaque arco = Items.Arco;
+            ItemDefensa armadura = Items.Armadura;
 
-            elfo.AgregarItem(arco);
-            elfo.AgregarItem(escudo);
-
-            enano.AgregarItem(espada);
-            enano.AgregarItem(armadura);
+            elfo.AgregarItemAtaque(arco);
+            enano.AgregarItemAtaque(espada);
+            mago.AgregarItemDefensa(armadura);
+            mago.AgregarItemAtaque(espada);
             
-            mago.Estudiar(12);
-
-            mago.AgregarItem(espada);
-            mago.AgregarHechizo(Hechizo.BolaDeFuego);
-            mago.AgregarHechizo(Hechizo.RayoDeHielo);
             
+            if (mago is Mago magoPersonaje)
+            {
+                magoPersonaje.AgregarHechizo(Hechizo.BolaDeFuego);
+                magoPersonaje.AgregarHechizo(Hechizo.RayoDeHielo);
+            }
+            
+
             Console.WriteLine("\nAtaques y hechizos:");
             
-            
+            // Simular ataques y curaciones
             int ataqueElfo = elfo.ValorAtaque();
             enano.RecibirAtaque(ataqueElfo, elfo.Nombre);
             
@@ -40,11 +40,18 @@ namespace RoleplayGame
             mago.RecibirAtaque(ataqueEnano, enano.Nombre);
             
             Hechizo hechizo = Hechizo.BolaDeFuego;
-            int ataqueMago = mago.ValorAtaque(hechizo: hechizo);
-            elfo.RecibirAtaque(ataqueMago, mago.Nombre);
-            elfo.Curar(30);
-           
+            
+            
+            if (mago is Mago magoPersonajeParaAtaque)
+            {
+                int ataqueMago = magoPersonajeParaAtaque.ValorAtaque(hechizo);
+                elfo.RecibirAtaque(ataqueMago, mago.Nombre);
+            }
+
+            if (elfo is Elfo elfoPersonaje)
+            {
+                elfoPersonaje.Curar(20);
+            }
         }
-        
     }
 }
