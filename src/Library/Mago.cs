@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace RoleplayGame
 {
-    public class Mago : IPersonaje
+    public class Mago : IPersonaje, IHechicero
     {
         public string Nombre { get; set; }
         public int Vida { get; set; }
@@ -16,7 +16,7 @@ namespace RoleplayGame
         public int ManaInicial;
 
         public ArrayList Hechizos { get; set; } = new ArrayList();
-        public ArrayList Item { get; set; } = new ArrayList();
+        public ArrayList Items { get; set; } = new ArrayList();
         
         
         public Mago(string nombre)
@@ -45,12 +45,15 @@ namespace RoleplayGame
         {
             Hechizos.Add(hechizo);
         }
-
-        public void AgregarItem(ItemAtaque item, ItemDefensa item2)
+        public void AgregarItemAtaque(ItemAtaque item)
         {
-            Item.Add(item);
-            Item.Add(item2);
+            Items.Add(item);
         }
+        public void AgregarItemDefensa(ItemDefensa item2)
+        {
+            Items.Add(item2);
+        }
+
 
         public void Curar(int curar)
         {
@@ -83,7 +86,7 @@ namespace RoleplayGame
             }
             else
             {
-                foreach (ItemAtaque i in Item)
+                foreach (ItemAtaque i in Items)
                 {
                     valor += i.Ataque;
                 }
@@ -94,21 +97,37 @@ namespace RoleplayGame
 
         public int ValorAtaque()
         {
-            return ValorAtaque(null);
+            int valor = Ataque;
+            
+            foreach (var item in Items)
+            {
+                if (item is ItemAtaque itemAtaque)
+                {
+                    valor += itemAtaque.Ataque;
+                }
+            }
+
+            return valor;
         }
+
 
         public void RecibirAtaque(int ataque, string atacante)
         {
-            int vida = Vida;
-            foreach (ItemDefensa item in Item)
+            int defensaTotal = 0;
+            
+            foreach (var item in Items)
             {
-                vida += item.Defensa;
+                if (item is ItemDefensa itemDefensa)
+                {
+                    defensaTotal += itemDefensa.Defensa;
+                }
             }
             
-            Vida -= ataque;
-            Console.WriteLine($"{Nombre} recibió {ataque} puntos de daño de {atacante}. Vida actual: {Vida}.");
-        }
+            int danioRecibido = Math.Max(0, ataque - defensaTotal);
+            Vida -= danioRecibido;
 
+            Console.WriteLine($"{Nombre} recibió {danioRecibido} puntos de daño de {atacante}. Vida actual: {Vida}.");
+        }
         public void Estudiar(int estudio)
         {
             if (estudio > ManaInicial)

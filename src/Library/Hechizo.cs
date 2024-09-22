@@ -9,9 +9,15 @@
         
         public int GastoMana { get; set; }
     
-        public int ObtenerAtaque() => Ataque;
-        
-        public int ObtenerDefensa() => Defensa;
+        public int ObtenerAtaque()
+        {
+            return Ataque;
+        }
+
+        public int ObtenerDefensa()
+        {
+            return Defensa;
+        }
         
         // Hechizos fijos
         public static Hechizo BolaDeFuego { get; } = new Hechizo { Nombre = "Bola de Fuego", Ataque = 50, GastoMana = 10};

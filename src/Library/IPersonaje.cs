@@ -8,7 +8,10 @@ namespace RoleplayGame
         int Vida { get; set; }
         int Ataque { get; set; }
 
-        void AgregarItem(ItemAtaque item, ItemDefensa item2);
+        void AgregarItemAtaque(ItemAtaque item);
+        
+        void AgregarItemDefensa(ItemDefensa item);
+        
         int ValorAtaque();
         void RecibirAtaque(int ataque, string atacante);
     }

@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace RoleplayGame
 {
-    public class Elfo : IPersonaje
+    public class Elfo : IPersonaje, IElfo
     {
         public string Nombre { get; set; }
         public int Vida { get; set; }
@@ -46,11 +46,15 @@ namespace RoleplayGame
             Hechizos.Add(hechizo);
         }
 
-        public void AgregarItem(ItemAtaque item, ItemDefensa item2)
+        public void AgregarItemAtaque(ItemAtaque item)
         {
             Items.Add(item);
+        }
+        public void AgregarItemDefensa(ItemDefensa item2)
+        {
             Items.Add(item2);
         }
+
 
         public void Curar(int curar)
         {
@@ -95,23 +99,35 @@ namespace RoleplayGame
         public int ValorAtaque()
         {
             int valor = Ataque;
-            foreach (ItemAtaque i in Items)
+            
+            foreach (var item in Items)
             {
-                valor += i.Ataque;
+                if (item is ItemAtaque itemAtaque)
+                {
+                    valor += itemAtaque.Ataque;
+                }
             }
+
             return valor;
         }
 
+
         public void RecibirAtaque(int ataque, string atacante)
         {
-            int vida = Vida;
-            foreach (ItemDefensa item in Items)
+            int defensaTotal = 0;
+            
+            foreach (var item in Items)
             {
-                vida += item.Defensa;
+                if (item is ItemDefensa itemDefensa)
+                {
+                    defensaTotal += itemDefensa.Defensa;
+                }
             }
             
-            Vida -= ataque;
-            Console.WriteLine($"{Nombre} recibió {ataque} puntos de daño de {atacante}. Vida actual: {Vida}.");
+            int danioRecibido = Math.Max(0, ataque - defensaTotal);
+            Vida -= danioRecibido;
+
+            Console.WriteLine($"{Nombre} recibió {danioRecibido} puntos de daño de {atacante}. Vida actual: {Vida}.");
         }
     }
 }

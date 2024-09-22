@@ -7,7 +7,7 @@ namespace RoleplayGame
     {
         private IPersonaje _personajeImplementation;
         public string Nombre { get; set; }
-        public ArrayList Item { get; set; } = new ArrayList();
+        public ArrayList Items { get; set; } = new ArrayList();
         public int Vida { get; set; }
         
         public int Ataque { get; set; }
@@ -18,32 +18,49 @@ namespace RoleplayGame
             Vida = 250;
             Ataque = 50;
         }
-        public void AgregarItem(ItemAtaque item, ItemDefensa item2)
+        public void AgregarItemAtaque(ItemAtaque item)
         {
-            Item.Add(item);
-            Item.Add(item2);
+            Items.Add(item);
         }
+        public void AgregarItemDefensa(ItemDefensa item2)
+        {
+            Items.Add(item2);
+        }
+
 
         public int ValorAtaque()
         {
             int valor = Ataque;
-            foreach (ItemAtaque item in Item)
+            
+            foreach (var item in Items)
             {
-                valor += item.Ataque;
+                if (item is ItemAtaque itemAtaque)
+                {
+                    valor += itemAtaque.Ataque;
+                }
             }
+
             return valor;
         }
 
+
         public void RecibirAtaque(int ataque, string atacante)
         {
-            int vida = Vida;
-            foreach (ItemDefensa item in Item)
+            int defensaTotal = 0;
+            
+            foreach (var item in Items)
             {
-                vida += item.Defensa;
+                if (item is ItemDefensa itemDefensa)
+                {
+                    defensaTotal += itemDefensa.Defensa;
+                }
             }
             
-            Vida -= ataque;
-            Console.WriteLine($"{Nombre} recibió {ataque} puntos de daño de {atacante}. Vida actual: {Vida}.");
+            int danioRecibido = Math.Max(0, ataque - defensaTotal);
+            Vida -= danioRecibido;
+
+            Console.WriteLine($"{Nombre} recibió {danioRecibido} puntos de daño de {atacante}. Vida actual: {Vida}.");
         }
+
     }
 }
