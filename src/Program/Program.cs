@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace RoleplayGame
 {
-    class Program
+    class Programgit 
     {
         static void Main(string[] args)
         {
@@ -34,18 +34,17 @@ namespace RoleplayGame
             
             // Simular ataques y curaciones
             int ataqueElfo = elfo.ValorAtaque();
-            enano.RecibirAtaque(ataqueElfo, elfo.Nombre);
+            enano.RecibirAtaque(elfo);
             
             int ataqueEnano = enano.ValorAtaque();
-            mago.RecibirAtaque(ataqueEnano, enano.Nombre);
+            mago.RecibirAtaque(enano);
             
             Hechizo hechizo = Hechizo.BolaDeFuego;
             
             
             if (mago is Mago magoPersonajeParaAtaque)
             {
-                int ataqueMago = magoPersonajeParaAtaque.ValorAtaque(hechizo);
-                elfo.RecibirAtaque(ataqueMago, mago.Nombre);
+                elfo.RecibirHechizo(magoPersonajeParaAtaque, Hechizo.BolaDeFuego);
             }
 
             if (elfo is Elfo elfoPersonaje)
