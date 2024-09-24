@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace RoleplayGame
 {
-    class Program
+    class Programgit 
     {
         static void Main(string[] args)
         {
