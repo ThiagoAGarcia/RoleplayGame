@@ -21,6 +21,22 @@ namespace RoleplayGame
         
         private ArrayList items = new ArrayList();
         
+        public int HechizosCount
+        {
+            get { return hechizos.Count; }
+        }
+
+        
+        public int ItemsCount
+        {
+            get { return items.Count; }
+        }
+        
+        public ArrayList Hechizos
+        {
+            get { return hechizos; }
+        }
+        
         // Constructor para inicializar vida_inicial
         public Elfo(string nombre)
         {

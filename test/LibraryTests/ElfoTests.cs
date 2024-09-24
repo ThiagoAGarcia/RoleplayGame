@@ -2,16 +2,15 @@ using RoleplayGame;
 
 namespace RoleplayGameTests
 {
-    public class ElfoTests 
+    public class ElfoTests
     {
-        private Elfo elfo;
-        private ItemAtaque espada;
-        private ItemDefensa escudo;
-        private Enano enano;
+        Elfo elfo = new Elfo("pepe");
+        Enano enano = new Enano("rancio");
         
-         espada = Items.Espada;  
-                    escudo = Items.Escudo;  
-        
+        ItemAtaque espada = Items.Espada;
+        ItemDefensa escudo = Items.Escudo;
+        ItemAtaque arco = Items.Arco;
+        ItemDefensa armadura = Items.Armadura;
 
         [SetUp]
         public void Setup()
@@ -46,7 +45,7 @@ namespace RoleplayGameTests
         {
             elfo.AgregarItemAtaque(espada);
             elfo.AgregarItemDefensa(escudo);
-            Assert.AreEqual(2, elfo.Items.Count); 
+            Assert.AreEqual(2, elfo.ItemsCount); 
         }
 
         [Test]

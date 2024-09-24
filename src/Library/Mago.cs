@@ -18,6 +18,23 @@ namespace RoleplayGame
         private ArrayList hechizos = new ArrayList();
         private ArrayList items = new ArrayList();
         
+        public int HechizosCount
+        {
+            get { return hechizos.Count; }
+        }
+
+        // Propiedad pública para obtener el número de ítems
+        public int ItemsCount
+        {
+            get { return items.Count; }
+        }
+        
+        public ArrayList Hechizos
+        {
+            get { return hechizos; }
+        }
+        
+        
         
         public Mago(string nombre)
         {

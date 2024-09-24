@@ -5,11 +5,13 @@ namespace RoleplayGameTests
 {
     public class EnanoTests
     {
-        private Enano enano;
-        private Mago mago;
-        private ItemAtaque espada;
-        private ItemDefensa escudo;
-
+        Mago mago = new Mago("pepe");
+        Enano enano = new Enano("rancio");
+        
+        ItemAtaque espada = Items.Espada;
+        ItemDefensa escudo = Items.Escudo;
+        ItemAtaque arco = Items.Arco;
+        ItemDefensa armadura = Items.Armadura;
         [SetUp]
         public void Setup()
         {
@@ -33,7 +35,7 @@ namespace RoleplayGameTests
             enano.AgregarItemAtaque(Items.Espada); 
             enano.AgregarItemDefensa(Items.Escudo); 
 
-            Assert.AreEqual(2, enano.Items.Count);
+            Assert.AreEqual(2, enano.ItemsCount);
         }
 
         [Test]

@@ -6,16 +6,19 @@ namespace RoleplayGame.Tests
     [TestFixture]
     public class MagoTests
     {
-        private Mago mago;
-        private ItemAtaque espada;
-        private ItemDefensa escudo;
-        private Enano enano;
+        Mago mago = new Mago("pepe");
+        Enano enano = new Enano("rancio");
+
+        ItemAtaque espada = Items.Espada;
+        ItemDefensa escudo = Items.Escudo;
+        ItemAtaque arco = Items.Arco;
+        ItemDefensa armadura = Items.Armadura;
 
         [SetUp]
         public void Setup()
         {
             mago = new Mago("Gandalf");
-            espada = Items.Espada;  
+            espada = Items.Espada;
             escudo = Items.Escudo;
             enano = new Enano("Brok");
         }
@@ -34,7 +37,7 @@ namespace RoleplayGame.Tests
             var hechizo = Hechizo.BolaDeFuego;
             mago.AgregarHechizo(hechizo);
 
-            Assert.AreEqual(1, mago.Hechizos.Count);
+            Assert.AreEqual(1, mago.HechizosCount);
             Assert.AreEqual(hechizo.Ataque, ((Hechizo)mago.Hechizos[0]).Ataque);
         }
 
@@ -43,14 +46,16 @@ namespace RoleplayGame.Tests
         {
             mago.AgregarItemAtaque(espada);
             mago.AgregarItemDefensa(escudo);
-            Assert.AreEqual(2, mago.Items.Count); 
+            Assert.AreEqual(2, mago.ItemsCount);
         }
 
         [Test]
         public void TestValorAtaque()
         {
-            mago.AgregarItemAtaque(espada); 
+            mago.AgregarItemAtaque(espada);
             int valorAtaque = mago.ValorAtaque();
 
             Assert.AreEqual(50, valorAtaque);
         }
+    }
+}

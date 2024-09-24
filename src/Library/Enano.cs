@@ -8,6 +8,12 @@ namespace RoleplayGame
         private IPersonaje _personajeImplementation;
         public string Nombre { get; set; }
         private ArrayList items { get; set; } = new ArrayList();
+        
+        // Propiedad pública para obtener el número de ítems
+        public int ItemsCount
+        {
+            get { return items.Count; }
+        }
         public int Vida { get; set; }
         
         public int Ataque { get; set; }
