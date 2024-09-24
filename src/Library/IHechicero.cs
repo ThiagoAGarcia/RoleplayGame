@@ -3,8 +3,9 @@ namespace RoleplayGame
 {
     public interface IHechicero
     {
-        ArrayList Hechizos { get; set; }
+        string Nombre {get; set; }
+        int Mana { get; set; }
         void AgregarHechizo(Hechizo hechizo);
-        int ValorAtaque(Hechizo hechizo);
+        int ValorAtaqueHechizos(Hechizo hechizo);
     }
 }
