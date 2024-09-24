@@ -8,11 +8,13 @@ namespace RoleplayGame
         public string Nombre { get; set; }
         public static int Vida;
         public static int Ataque;
-
+        
+        //Creación del atributo "maná": Es la representación de la energía mágica del personaje.
         public int Mana { get; set; }
 
         public int vidaInicial;
         
+        //"ManaIncial" es el maná con el que el personaje inicia.
         public int ManaInicial;
 
         private ArrayList hechizos = new ArrayList();
@@ -32,10 +34,12 @@ namespace RoleplayGame
 
         public string CargarMana(int mana)
         {
-            if (mana > ManaInicial)
+            //Si el maná + el maná cargado es mayor al ManaInicial (100) no se va a poder cargar maná.
+            if (Mana + mana > ManaInicial)
             {
                 return("No se puede cargar mas mana del que el personaje posee");
             }
+            //Si no es mayor al ManaInicial, se carga el maná sin problema
             else
             {
                 Mana += mana;
@@ -76,11 +80,13 @@ namespace RoleplayGame
             
             if (hechizo != null)
             {
+                //Si el maná del personaje es mayor al gasto de maná del hechizo, se ejecuta.
                 if (Mana >= hechizo.GastoMana)
                 {
                     Mana -= hechizo.GastoMana;
                     valor += hechizo.Ataque;
                 }
+                //Si el maná del personaje es menor al gasto de maná del hechizo, no se ejecuta
                 else
                 {
                     Console.WriteLine($"{Nombre} no tiene suficiente mana para usar el hechizo {hechizo.Nombre}.");
