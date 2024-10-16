@@ -13,7 +13,14 @@ public class Personaje
         
         private ArrayList items = new ArrayList();
         
-        
+        public int VerVida()
+        {
+            return Vida;
+        }
+        public int VerAtaque()
+        {
+            return Ataque;
+        }
         public int ItemsCount
         {
             get { return items.Count; }
