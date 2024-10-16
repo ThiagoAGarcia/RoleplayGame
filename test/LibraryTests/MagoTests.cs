@@ -26,9 +26,9 @@ namespace RoleplayGame.Tests
         [Test]
         public void TestConstructor()
         {
-            Assert.AreEqual("Gandalaf", mago.Nombre);
-            Assert.AreEqual(150, Mago.Vida);
-            Assert.AreEqual(10, Mago.Ataque);
+            Assert.AreEqual("Gandalf", mago.Nombre);
+            Assert.AreEqual(200, Mago.Vida);
+            Assert.AreEqual(30, Mago.Ataque);
         }
 
         [Test]
@@ -55,7 +55,7 @@ namespace RoleplayGame.Tests
             mago.AgregarItemAtaque(espada);
             int valorAtaque = mago.ValorAtaque();
 
-            Assert.AreEqual(50, valorAtaque);
+            Assert.AreEqual(60, valorAtaque);
         }
     }
 }
