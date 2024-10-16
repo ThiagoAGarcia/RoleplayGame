@@ -1,6 +1,6 @@
 ﻿namespace RoleplayGame;
 
-public interface ICurador
+public interface ICurador : IPersonaje
 {
     public void Curar(int curar);
 }

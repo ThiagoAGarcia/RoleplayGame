@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections;
 
 namespace RoleplayGame
 {
-    class Programgit 
+    class Program
     {
         static void Main(string[] args)
         {
-            IPersonaje elfo = new Elfo("Legolas");
+            ICurador elfo = new Elfo("Legolas");
             IPersonaje enano = new Enano("Gimli");
-            IPersonaje mago = new Mago("Gandalf");
-
-            // Crear y agregar items
+            IHechicero mago = new Mago("Gandalf");
+            
             ItemAtaque espada = Items.Espada;
             ItemDefensa escudo = Items.Escudo;
             ItemAtaque arco = Items.Arco;
@@ -23,38 +21,22 @@ namespace RoleplayGame
             mago.AgregarItemDefensa(armadura);
             mago.AgregarItemAtaque(espada);
             
-            if (mago is Mago magoPersonajes)
-            {
-                magoPersonajes.AgregarItemMagico(varita);
-            }
-            
-            if (mago is Mago magoPersonaje)
-            {
-                magoPersonaje.AgregarHechizo(Hechizo.BolaDeFuego);
-                magoPersonaje.AgregarHechizo(Hechizo.RayoDeHielo);
-            }
-            
+            mago.AgregarItemMagico(varita);
+            mago.AgregarHechizo(Hechizo.BolaDeFuego);
+            mago.AgregarHechizo(Hechizo.RayoDeHielo);
 
             Console.WriteLine("\nAtaques y hechizos:");
             
             int ataqueElfo = elfo.ValorAtaque();
             enano.RecibirAtaque(elfo);
-            
+
             int ataqueEnano = enano.ValorAtaque();
             mago.RecibirAtaque(enano);
             
             Hechizo hechizo = Hechizo.BolaDeFuego;
+            elfo.RecibirHechizo(mago, hechizo);
             
-            
-            if (mago is Mago magoPersonajeParaAtaque)
-            {
-                elfo.RecibirHechizo(magoPersonajeParaAtaque, Hechizo.BolaDeFuego);
-            }
-
-            if (elfo is Elfo elfoPersonaje)
-            {
-                elfoPersonaje.Curar(20);
-            }
+            elfo.Curar(20);
         }
     }
 }
