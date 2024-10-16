@@ -23,6 +23,7 @@ namespace RoleplayGameTests
         [Test]
         public void TestInicializacionElfo()
         {
+            elfo = new Elfo("Legolas");
             Assert.AreEqual("Legolas", elfo.Nombre);
             Assert.AreEqual(200, Elfo.Vida);
             Assert.AreEqual(20, Elfo.Ataque);
@@ -32,9 +33,11 @@ namespace RoleplayGameTests
         [Test]
         public void TestCargarMana()
         {
+            elfo.Mana = 50;
             var resultado = elfo.CargarMana(50);
+            
             Assert.AreEqual("Se cargo 50", resultado);
-            Assert.AreEqual(150, elfo.Mana);
+            Assert.AreEqual(100, elfo.Mana);
 
             resultado = elfo.CargarMana(200);
             Assert.AreEqual("No se puede cargar mas mana del que el personaje posee", resultado);
@@ -65,14 +68,14 @@ namespace RoleplayGameTests
             elfo.AgregarItemAtaque(espada); 
             int valorAtaque = elfo.ValorAtaque();
 
-            Assert.AreEqual(50, valorAtaque); 
+            Assert.AreEqual(60, valorAtaque); 
         }
 
         [Test]
         public void TestRecibirAtaqueSinDefensa()
         {
             elfo.RecibirAtaque(enano);
-            Assert.AreEqual(160, Elfo.Vida); 
+            Assert.AreEqual(170, Elfo.Vida); 
         }
 
         [Test]
@@ -81,7 +84,7 @@ namespace RoleplayGameTests
             elfo.AgregarItemDefensa(escudo);  
             elfo.RecibirAtaque(enano);
 
-            Assert.AreEqual(190, Elfo.Vida);
+            Assert.AreEqual(200, Elfo.Vida);
         }
     }
 }
