@@ -1,6 +1,6 @@
 ﻿namespace RoleplayGame;
 
-public class ItemMagico
+public class ItemMagico : IMagico
 {
     public string Nombre { get; set; }
     public int Ataque { get; set; }
