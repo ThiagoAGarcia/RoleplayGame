@@ -1,6 +1,6 @@
 ﻿namespace RoleplayGame;
 
-public interface IElfo
+public interface ICurador
 {
     public void Curar(int curar);
 }

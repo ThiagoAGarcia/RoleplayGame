@@ -18,6 +18,10 @@ namespace RoleplayGame
             get { return hechizos.Count; }
         }
         
+        public object VerHechizo(int indice)
+        {
+            return hechizos[indice];
+        }
         
         public Mago(string nombre)
         {
