@@ -3,15 +3,17 @@ using System.Collections;
 
 namespace RoleplayGame
 {
-    public class Mago : Personaje,IPersonaje, IHechicero
+    public class Mago : Personaje, IHechicero
     {
         
 
         public int Mana { get; set; }
         
         public int ManaInicial;
+        
+        private List<ItemMagico> itemsMagicos = new List<ItemMagico>();
 
-        private ArrayList hechizos = new ArrayList();
+        private List<Hechizo> hechizos = new List<Hechizo>();
         
         public int HechizosCount
         {
@@ -50,10 +52,18 @@ namespace RoleplayGame
             hechizos.Add(hechizo);
         }
 
+        public void AgregarItemMagico(ItemMagico itemMagico)
+        {
+            itemsMagicos.Add(itemMagico);
+        }
+        
         public int ValorAtaqueHechizos(Hechizo hechizo = null)
         {
             int valor = Ataque;
-            
+            foreach (var items in itemsMagicos)
+            {
+                items.MejorarHechizos(this);
+            }
             if (hechizo != null)
             {
                 if (Mana >= hechizo.GastoMana)
@@ -69,6 +79,14 @@ namespace RoleplayGame
             
             return valor;
         }
+
+        public void subirAtaqueHechizos(int ataque){
+            foreach (var hechizos in hechizos)
+            {
+                hechizos.Ataque += ataque;
+            }
+        }
+        
         
         public void Estudiar(int estudio)
         {

@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 
-public class Personaje
+public class Personaje : IPersonaje
 {
     public string Nombre { get; set; }
         public static int Vida;
@@ -42,6 +42,7 @@ public class Personaje
         }
         public void RecibirHechizo(IHechicero hechiceroAtacante, Hechizo hechizo)
         {
+            hechiceroAtacante.ValorAtaqueHechizos(hechizo);
             int defensaTotal = 0;
             foreach (var item in items)
             {
@@ -83,6 +84,7 @@ public class Personaje
 
             Console.WriteLine($"{Nombre} recibió {danioRecibido} puntos de daño de {ataque.Nombre}. Vida actual: {Vida}.");
         }
+        
         public void AgregarItemAtaque(ItemAtaque item)
         {
             items.Add(item);
