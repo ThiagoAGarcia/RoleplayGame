@@ -83,6 +83,7 @@ public class Personaje
 
             Console.WriteLine($"{Nombre} recibió {danioRecibido} puntos de daño de {ataque.Nombre}. Vida actual: {Vida}.");
         }
+        
         public void AgregarItemAtaque(ItemAtaque item)
         {
             items.Add(item);

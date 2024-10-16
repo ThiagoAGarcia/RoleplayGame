@@ -16,11 +16,18 @@ namespace RoleplayGame
             ItemDefensa escudo = Items.Escudo;
             ItemAtaque arco = Items.Arco;
             ItemDefensa armadura = Items.Armadura;
+            ItemMagico barita = Items.barita;
 
             elfo.AgregarItemAtaque(arco);
             enano.AgregarItemAtaque(espada);
             mago.AgregarItemDefensa(armadura);
             mago.AgregarItemAtaque(espada);
+            
+            if (mago is Mago magoPersonajes)
+            {
+                magoPersonajes.AgregarItemMagico(barita);
+            }
+            
             
             
             if (mago is Mago magoPersonaje)

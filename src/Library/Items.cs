@@ -7,4 +7,6 @@ public static class Items
     public static ItemDefensa Escudo { get; } = new ItemDefensa { Nombre = "Escudo", Defensa = 50 };
     public static ItemAtaque Arco { get; } = new ItemAtaque { Nombre = "Arco", Ataque = 25 };
     public static ItemDefensa Armadura { get; } = new ItemDefensa { Nombre = "Armadura", Defensa = 40 };
+    
+    public static ItemMagico barita { get; } = new ItemMagico { Nombre = "Barita", Ataque = 50 };
 }

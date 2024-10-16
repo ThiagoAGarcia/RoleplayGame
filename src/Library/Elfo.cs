@@ -8,80 +8,94 @@ namespace RoleplayGame
     public int Mana { get; set; }
     public int ManaInicial;
 
-    private ArrayList hechizos = new ArrayList();
+    private List<Hechizo> hechizos = new List<Hechizo>();
+    
+    private List<ItemMagico> itemsMagicos = new List<ItemMagico>();
 
     public int HechizosCount
     {
         get { return hechizos.Count; }
     }
 
-    public ArrayList Hechizos
-    {
-        get { return hechizos; }
-    }
-    public Elfo(string nombre)
-    {
-        Nombre = nombre;
-        Vida = 200;
-        Ataque = 20;
-        vidaInicial = 200;
-        Mana = 100;
-        ManaInicial = 100;
-    }
-
-    public string CargarMana(int mana)
-    {
-        if (Mana + mana > ManaInicial)
+        public List<Hechizo> Hechizos
         {
-            return ("No se puede cargar mas mana del que el personaje posee");
+            get { return hechizos; }
         }
-        else
+        public Elfo(string nombre)
         {
-            Mana += mana;
-            return ($"Se cargo {mana}");
+            Nombre = nombre;
+            Vida = 200;
+            Ataque = 20;
+            vidaInicial = 200;
+            Mana = 100;
+            ManaInicial = 100;
         }
-    }
-
-    public void AgregarHechizo(Hechizo hechizo)
-    {
-        hechizos.Add(hechizo);
-    }
-
-
-    public void Curar(int curar)
-    {
-        if ((Vida + curar) > vidaInicial || curar > 20)
-        {
-            Console.WriteLine(
-                $"{Nombre} intentó curarse, pero no puede curarse más de su vida base o mas de 20 puntos de vida por turno.");
-        }
-        else
-        {
-            Vida += curar;
-            Console.WriteLine($"{Nombre} se curó {curar} puntos de vida. Vida actual: {Vida}/{vidaInicial}.");
-        }
-    }
-
-    public int ValorAtaqueHechizos(Hechizo hechizo = null)
-    {
-        int valor = Ataque;
-
-        if (hechizo != null)
-        {
-            if (Mana >= hechizo.GastoMana)
+        public void subirAtaqueHechizos(int ataque){
+            foreach (var Hechizos in hechizos)
             {
-                Mana -= hechizo.GastoMana;
-                valor += hechizo.Ataque;
+                Hechizos.Ataque += ataque;
+            }
+            
+        }
+        
+        public string CargarMana(int mana)
+        {
+            if (Mana + mana > ManaInicial)
+            {
+                return ("No se puede cargar mas mana del que el personaje posee");
             }
             else
             {
-                Console.WriteLine($"{Nombre} no tiene suficiente mana para usar el hechizo {hechizo.Nombre}.");
+                Mana += mana;
+                return ($"Se cargo {mana}");
             }
-
-
         }
 
-        return valor;
-    }
+        public void AgregarHechizo(Hechizo hechizo)
+        {
+            hechizos.Add(hechizo);
+        }
+        
+        public void AgregarItemMagico(ItemMagico itemMagico)
+        {
+            itemsMagicos.Add(itemMagico);
+        }
+
+        public void Curar(int curar)
+        {
+            if ((Vida + curar) > vidaInicial || curar > 20)
+            {
+                Console.WriteLine(
+                    $"{Nombre} intentó curarse, pero no puede curarse más de su vida base o mas de 20 puntos de vida por turno.");
+            }
+            else
+            {
+                Vida += curar;
+                Console.WriteLine($"{Nombre} se curó {curar} puntos de vida. Vida actual: {Vida}/{vidaInicial}.");
+            }
+        }
+
+        public int ValorAtaqueHechizos(Hechizo hechizo = null)
+        {
+            int valor = Ataque;
+            foreach (var items in itemsMagicos)
+            {
+                items.MejorarHechizos(this);
+            }
+            if (hechizo != null)
+            {
+                if (Mana >= hechizo.GastoMana)
+                {
+                    Mana -= hechizo.GastoMana;
+                    valor += hechizo.Ataque;
+                }
+                else
+                {
+                    Console.WriteLine($"{Nombre} no tiene suficiente mana para usar el hechizo {hechizo.Nombre}.");
+                }
+            }
+                
+            return valor;
+        }
     }
 }

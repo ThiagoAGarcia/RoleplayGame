@@ -7,5 +7,7 @@ namespace RoleplayGame
         int Mana { get; set; }
         void AgregarHechizo(Hechizo hechizo);
         int ValorAtaqueHechizos(Hechizo hechizo);
+        
+        void subirAtaqueHechizos(int ataque);
     }
 }
