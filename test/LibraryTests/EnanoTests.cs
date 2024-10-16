@@ -26,7 +26,7 @@ namespace RoleplayGameTests
         {
             Assert.AreEqual("Thorin", enano.Nombre);
             Assert.AreEqual(150, enano.VerVida());
-            Assert.AreEqual(20, enano.VerAtaque());
+            Assert.AreEqual(10, enano.VerAtaque());
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace RoleplayGameTests
             enano.AgregarItemAtaque(Items.Arco); 
             int valorAtaque = enano.ValorAtaque();
 
-            Assert.AreEqual(75, valorAtaque); 
+            Assert.AreEqual(65, valorAtaque); 
         }
 
         [Test]
@@ -53,7 +53,7 @@ namespace RoleplayGameTests
         {
             enano.RecibirAtaque(mago);
 
-            Assert.AreEqual(120, enano.VerVida());
+            Assert.AreEqual(140, enano.VerVida());
         }
 
         [Test]
@@ -62,7 +62,7 @@ namespace RoleplayGameTests
             enano.AgregarItemDefensa(Items.Escudo); 
             enano.RecibirAtaque(mago);
 
-            Assert.AreEqual(140, enano.VerVida());
+            Assert.AreEqual(150, enano.VerVida());
         }
     }
 }
