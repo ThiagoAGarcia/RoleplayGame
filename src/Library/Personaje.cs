@@ -42,6 +42,7 @@ public class Personaje
         }
         public void RecibirHechizo(IHechicero hechiceroAtacante, Hechizo hechizo)
         {
+            hechiceroAtacante.ValorAtaqueHechizos(hechizo);
             int defensaTotal = 0;
             foreach (var item in items)
             {

@@ -16,7 +16,7 @@ namespace RoleplayGame
             ItemDefensa escudo = Items.Escudo;
             ItemAtaque arco = Items.Arco;
             ItemDefensa armadura = Items.Armadura;
-            ItemMagico barita = Items.barita;
+            ItemMagico varita = Items.varita;
 
             elfo.AgregarItemAtaque(arco);
             enano.AgregarItemAtaque(espada);
@@ -25,10 +25,8 @@ namespace RoleplayGame
             
             if (mago is Mago magoPersonajes)
             {
-                magoPersonajes.AgregarItemMagico(barita);
+                magoPersonajes.AgregarItemMagico(varita);
             }
-            
-            
             
             if (mago is Mago magoPersonaje)
             {
@@ -39,7 +37,6 @@ namespace RoleplayGame
 
             Console.WriteLine("\nAtaques y hechizos:");
             
-            // Simular ataques y curaciones
             int ataqueElfo = elfo.ValorAtaque();
             enano.RecibirAtaque(elfo);
             
