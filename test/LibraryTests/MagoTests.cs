@@ -38,7 +38,7 @@ namespace RoleplayGame.Tests
             mago.AgregarHechizo(hechizo);
 
             Assert.AreEqual(1, mago.HechizosCount);
-            Assert.AreEqual(hechizo.Ataque, ((Hechizo)mago.Hechizos[0]).Ataque);
+            Assert.AreEqual(hechizo.Ataque, ((Hechizo)mago.VerHechizo(0)).Ataque);
         }
 
         [Test]
