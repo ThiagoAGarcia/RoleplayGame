@@ -4,7 +4,7 @@ namespace RoleplayGameTests
 {
     public class ElfoTests
     {
-        Elfo elfo = new Elfo("pepe");
+        Elfo _curador = new Elfo("pepe");
         Enano enano = new Enano("rancio");
         
         ItemAtaque espada = Items.Espada;
@@ -15,7 +15,7 @@ namespace RoleplayGameTests
         [SetUp]
         public void Setup()
         {
-            elfo = new Elfo("Legolas");
+            _curador = new Elfo("Legolas");
            
             enano = new Enano("Gimli"); 
         }
@@ -23,50 +23,50 @@ namespace RoleplayGameTests
         [Test]
         public void TestInicializacionElfo()
         {
-            elfo = new Elfo("Legolas");
-            Assert.AreEqual("Legolas", elfo.Nombre);
+            _curador = new Elfo("Legolas");
+            Assert.AreEqual("Legolas", _curador.Nombre);
             Assert.AreEqual(200, Elfo.Vida);
             Assert.AreEqual(20, Elfo.Ataque);
-            Assert.AreEqual(100, elfo.Mana);
+            Assert.AreEqual(100, _curador.Mana);
         }
 
         [Test]
         public void TestCargarMana()
         {
-            elfo.Mana = 50;
-            var resultado = elfo.CargarMana(50);
+            _curador.Mana = 50;
+            var resultado = _curador.CargarMana(50);
             
             Assert.AreEqual("Se cargo 50", resultado);
-            Assert.AreEqual(100, elfo.Mana);
+            Assert.AreEqual(100, _curador.Mana);
 
-            resultado = elfo.CargarMana(200);
+            resultado = _curador.CargarMana(200);
             Assert.AreEqual("No se puede cargar mas mana del que el personaje posee", resultado);
         }
 
         [Test]
         public void TestAgregarItem()
         {
-            elfo.AgregarItemAtaque(espada);
-            elfo.AgregarItemDefensa(escudo);
-            Assert.AreEqual(2, elfo.ItemsCount); 
+            _curador.AgregarItemAtaque(espada);
+            _curador.AgregarItemDefensa(escudo);
+            Assert.AreEqual(2, _curador.ItemsCount); 
         }
 
         [Test]
         public void TestCurar()
         {
             Elfo.Vida = 180;
-            elfo.Curar(15);
+            _curador.Curar(15);
             Assert.AreEqual(195, Elfo.Vida);
 
-            elfo.Curar(25);  
+            _curador.Curar(25);  
             Assert.AreEqual(195, Elfo.Vida); 
         }
 
         [Test]
         public void TestValorAtaqueConItem()
         {
-            elfo.AgregarItemAtaque(espada); 
-            int valorAtaque = elfo.ValorAtaque();
+            _curador.AgregarItemAtaque(espada); 
+            int valorAtaque = _curador.ValorAtaque();
 
             Assert.AreEqual(60, valorAtaque); 
         }
@@ -74,15 +74,15 @@ namespace RoleplayGameTests
         [Test]
         public void TestRecibirAtaqueSinDefensa()
         {
-            elfo.RecibirAtaque(enano);
+            _curador.RecibirAtaque(enano);
             Assert.AreEqual(170, Elfo.Vida); 
         }
 
         [Test]
         public void TestRecibirAtaqueConDefensa()
         {
-            elfo.AgregarItemDefensa(escudo);  
-            elfo.RecibirAtaque(enano);
+            _curador.AgregarItemDefensa(escudo);  
+            _curador.RecibirAtaque(enano);
 
             Assert.AreEqual(200, Elfo.Vida);
         }
