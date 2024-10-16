@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 
-public class Personaje
+public class Personaje : IPersonaje
 {
     public string Nombre { get; set; }
         public static int Vida;

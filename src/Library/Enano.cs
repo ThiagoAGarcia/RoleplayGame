@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace RoleplayGame
 {
-    public class Enano : Personaje, IPersonaje
+    public class Enano : Personaje
     {
         public Enano(string nombre)
         {
