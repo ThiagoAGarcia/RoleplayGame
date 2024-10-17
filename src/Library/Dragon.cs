@@ -19,7 +19,6 @@
             Ataques.AtacarConFuego(objetivo, this);
         }
 
-        // Usar un ataque con la cola a través de la composición AtaquesDragon
         public void UsarAtaqueCola(IPersonaje objetivo)
         {
             Ataques.AtacarConCola(objetivo, this);
