@@ -7,13 +7,17 @@ public class Personaje : IPersonaje
     public string Nombre { get; set; }
         public static int Vida;
         public static int Ataque;
-       
-
+        
         public int vidaInicial;
+        
+      
         
         private List<ItemAtaque> items_ataque = new List<ItemAtaque>();
         private List<ItemDefensa> items_defensa = new List<ItemDefensa>();
-        
+        public int VerVidaInicial()
+        {
+            return vidaInicial;
+        }
         public int VerVida()
         {
             return Vida;
@@ -26,7 +30,12 @@ public class Personaje : IPersonaje
         {
             get { return items_ataque.Count() + items_defensa.Count(); }
         }
-        
+
+        public void CambiarVida(int vida)
+        {
+            Vida = vida;
+        }
+
         public int ValorAtaque()
         {
             int valor = Ataque;

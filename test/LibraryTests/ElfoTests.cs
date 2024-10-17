@@ -62,14 +62,14 @@ namespace RoleplayGameTests
         [Test]
         public void TestCurar()
         {
-            Elfo.Vida = 180;
+            Enano.Vida = 100;
 
-            _curador.Curar(15);
-            Assert.AreEqual(195, Elfo.Vida);
+            _curador.Curar(15, enano);
+            Assert.AreEqual(115, Enano.Vida);
 
-            _curador.Curar(25);  
+            _curador.Curar(100, enano);  
 
-            Assert.AreEqual(195, Elfo.Vida); 
+            Assert.AreEqual(115, Enano.Vida); 
         }
 
         [Test]

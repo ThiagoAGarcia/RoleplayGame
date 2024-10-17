@@ -70,17 +70,17 @@ namespace RoleplayGame
             itemsMagicos.Add(itemMagico);
         }
 
-        public void Curar(int curar)
+        public void Curar(int curar, IPersonaje Curado)
         {
-            if ((Vida + curar) > vidaInicial || curar > 20)
+            if ((Curado.VerVida() + curar) > Curado.VerVidaInicial() || curar > 20)
             {
                 Console.WriteLine(
-                    $"{Nombre} intentó curarse, pero no puede curarse más de su vida base o mas de 20 puntos de vida por turno.");
+                    $"{Nombre} intentó curar a {Curado.Nombre}, pero no puede curar más de su vida base o mas de 20 puntos de vida por turno.");
             }
             else
             {
-                Vida += curar;
-                Console.WriteLine($"{Nombre} se curó {curar} puntos de vida. Vida actual: {Vida}/{vidaInicial}.");
+                Curado.CambiarVida(VerVida() + curar);
+                Console.WriteLine($"{Nombre} curó a {Curado.Nombre} en {curar} puntos de vida. Vida actual: {Curado.VerVida()}/{Curado.VerVidaInicial()}.");
             }
         }
 

@@ -3,5 +3,5 @@
 public interface ICurador : IHechicero
 
 {
-    public void Curar(int curar);
+    public void Curar(int curar, IPersonaje curado);
 }

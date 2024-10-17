@@ -49,7 +49,7 @@ namespace RoleplayGame
 
             magoOscuro.ListarHechizos();
             
-            elfo.Curar(20);
+            elfo.Curar(20, mago);
         }
     }
 }
