@@ -31,6 +31,14 @@ namespace RoleplayGame
             Mana = 100;
             ManaInicial = 100;
         }
+        public void ListarHechizos()
+        {
+            for (int i = 0; i < hechizos.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {hechizos[i].Nombre}");
+            }
+        }
+
         public void subirAtaqueHechizos(int ataque){
             foreach (var Hechizos in hechizos)
             {

@@ -10,4 +10,6 @@ public static class Items
     public static ItemMagico varita { get; } = new ItemMagico { Nombre = "Varita", Ataque = 50 };
 
     public static ItemAtaque PaloGigante { get; } = new ItemAtaque { Nombre = "Palo Gigante", Ataque = 25 };
+    
+    public static ItemMagico grimorio { get; } = new ItemMagico { Nombre = "grimorio", Ataque = 100 };
 }

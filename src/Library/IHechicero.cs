@@ -10,5 +10,7 @@ namespace RoleplayGame
         int ValorAtaqueHechizos(Hechizo hechizo);
         
         void subirAtaqueHechizos(int ataque);
+
+        public void ListarHechizos();
     }
 }

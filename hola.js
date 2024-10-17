@@ -1,1 +1,0 @@
-let array = [{name: 'hola', age: 20}, {name: 'adios', age: 30}];
