@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿namespace RoleplayGame;
 
-namespace RoleplayGame
+public class MagoOscuro : Personaje, IHechicero
 {
-    public class Mago : Personaje, IHechicero
-    {
-        
-
-        public int Mana { get; set; }
+       public int Mana { get; set; }
         
         public int ManaInicial;
         
@@ -19,6 +14,12 @@ namespace RoleplayGame
         {
             get { return hechizos.Count; }
         }
+        
+        public object VerHechizo(int indice)
+        {
+            return hechizos[indice];
+        }
+
         public void ListarHechizos()
         {
             for (int i = 0; i < hechizos.Count; i++)
@@ -28,21 +29,16 @@ namespace RoleplayGame
         }
 
         
-        public object VerHechizo(int indice)
-        {
-            return hechizos[indice];
-        }
-        
-        public Mago(string nombre)
+        public MagoOscuro(string nombre)
         {
             Nombre = nombre;
-            Vida = 150;
-            Ataque = 10;
-            vidaInicial = 150;
-            Mana = 150;
-            ManaInicial = 150;
+            Vida = 190;
+            Ataque = 8; 
+            vidaInicial = 180;
+            Mana = 100;
+            ManaInicial = Mana;
         }
-
+        
         public string CargarMana(int mana)
         {
             if (mana > ManaInicial)
@@ -108,5 +104,4 @@ namespace RoleplayGame
                 Console.WriteLine($"Se estudio {estudio}");
             }
         }
-    }
 }

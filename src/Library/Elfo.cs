@@ -11,7 +11,7 @@ namespace RoleplayGame
 
     private List<Hechizo> hechizos = new List<Hechizo>();
     
-    private List<ItemMagico> itemsMagicos = new List<ItemMagico>();
+    private List<IItemMagico> itemsMagicos = new List<IItemMagico>();
 
     public int HechizosCount
     {
@@ -31,6 +31,14 @@ namespace RoleplayGame
             Mana = 100;
             ManaInicial = 100;
         }
+        public void ListarHechizos()
+        {
+            for (int i = 0; i < hechizos.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {hechizos[i].Nombre}");
+            }
+        }
+
         public void subirAtaqueHechizos(int ataque){
             foreach (var Hechizos in hechizos)
             {
@@ -57,22 +65,22 @@ namespace RoleplayGame
             hechizos.Add(hechizo);
         }
         
-        public void AgregarItemMagico(ItemMagico itemMagico)
+        public void AgregarItemMagico(IItemMagico itemMagico)
         {
             itemsMagicos.Add(itemMagico);
         }
 
-        public void Curar(int curar)
+        public void Curar(int curar, IPersonaje Curado)
         {
-            if ((Vida + curar) > vidaInicial || curar > 20)
+            if ((Curado.VerVida() + curar) > Curado.VerVidaInicial() || curar > 20)
             {
                 Console.WriteLine(
-                    $"{Nombre} intentó curarse, pero no puede curarse más de su vida base o mas de 20 puntos de vida por turno.");
+                    $"{Nombre} intentó curar a {Curado.Nombre}, pero no puede curar más de su vida base o mas de 20 puntos de vida por turno.");
             }
             else
             {
-                Vida += curar;
-                Console.WriteLine($"{Nombre} se curó {curar} puntos de vida. Vida actual: {Vida}/{vidaInicial}.");
+                Curado.CambiarVida(VerVida() + curar);
+                Console.WriteLine($"{Nombre} curó a {Curado.Nombre} en {curar} puntos de vida. Vida actual: {Curado.VerVida()}/{Curado.VerVidaInicial()}.");
             }
         }
 

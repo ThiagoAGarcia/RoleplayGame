@@ -7,10 +7,13 @@ namespace RoleplayGame
         string Nombre { get; set; }
         static int Vida;
         static int Ataque;
-
-        void AgregarItemAtaque(ItemAtaque item);
+        static int VidaInicial;
+        public int VerVidaInicial();
+        public int VerVida();
+        public void CambiarVida(int vida);
+        void AgregarItemAtaque(IAtaque item);
         
-        void AgregarItemDefensa(ItemDefensa item);
+        void AgregarItemDefensa(IDefensa item);
         
         int ValorAtaque();
         void RecibirAtaque(IPersonaje ataque);

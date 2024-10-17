@@ -9,10 +9,10 @@ namespace RoleplayGame.Tests
         Mago mago = new Mago("pepe");
         Enano enano = new Enano("rancio");
 
-        ItemAtaque espada = Items.Espada;
-        ItemDefensa escudo = Items.Escudo;
-        ItemAtaque arco = Items.Arco;
-        ItemDefensa armadura = Items.Armadura;
+        IAtaque espada = Items.Espada;
+        IDefensa escudo = Items.Escudo;
+        IAtaque arco = Items.Arco;
+        IDefensa armadura = Items.Armadura;
 
         [SetUp]
         public void Setup()
