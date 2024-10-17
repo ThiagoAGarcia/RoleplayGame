@@ -11,7 +11,7 @@ namespace RoleplayGame
 
     private List<Hechizo> hechizos = new List<Hechizo>();
     
-    private List<ItemMagico> itemsMagicos = new List<ItemMagico>();
+    private List<IItemMagico> itemsMagicos = new List<IItemMagico>();
 
     public int HechizosCount
     {
@@ -65,7 +65,7 @@ namespace RoleplayGame
             hechizos.Add(hechizo);
         }
         
-        public void AgregarItemMagico(ItemMagico itemMagico)
+        public void AgregarItemMagico(IItemMagico itemMagico)
         {
             itemsMagicos.Add(itemMagico);
         }

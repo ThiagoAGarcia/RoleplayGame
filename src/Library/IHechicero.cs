@@ -5,7 +5,7 @@ namespace RoleplayGame
     {
         string Nombre {get; set; }
         int Mana { get; set; }
-        void AgregarItemMagico(ItemMagico itemMagico);
+        void AgregarItemMagico(IItemMagico itemMagico);
         void AgregarHechizo(Hechizo hechizo);
         int ValorAtaqueHechizos(Hechizo hechizo);
         

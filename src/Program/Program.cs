@@ -12,15 +12,15 @@ namespace RoleplayGame
             IHechicero magoOscuro = new Mago("Black Gandalf");
             IPersonaje troll = new Troll("Scabbers", true);
 
-            ItemAtaque espada = Items.Espada;
-            ItemDefensa escudo = Items.Escudo;
-            ItemAtaque arco = Items.Arco;
-            ItemDefensa armadura = Items.Armadura;
-            ItemMagico varita = Items.varita;
-            ItemAtaque paloGigante = Items.PaloGigante;
-            ItemMagico grimorio = Items.grimorio;
+            IAtaque espada = Items.Espada;
+            IDefensa escudo = Items.Escudo;
+            IAtaque arco = Items.Arco;
+            IDefensa armadura = Items.Armadura;
+            IItemMagico varita = Items.varita;
+            IAtaque paloGigante = Items.PaloGigante;
+            IItemMagico grimorio = Items.grimorio;
 
-        elfo.AgregarItemAtaque(arco);
+            elfo.AgregarItemAtaque(arco);
             enano.AgregarItemAtaque(espada);
             mago.AgregarItemDefensa(armadura);
             mago.AgregarItemAtaque(espada);

@@ -6,7 +6,7 @@ public class MagoOscuro : Personaje, IHechicero
         
         public int ManaInicial;
         
-        private List<ItemMagico> itemsMagicos = new List<ItemMagico>();
+        private List<IItemMagico> itemsMagicos = new List<IItemMagico>();
 
         private List<Hechizo> hechizos = new List<Hechizo>();
         
@@ -56,7 +56,7 @@ public class MagoOscuro : Personaje, IHechicero
             hechizos.Add(hechizo);
         }
 
-        public void AgregarItemMagico(ItemMagico itemMagico)
+        public void AgregarItemMagico(IItemMagico itemMagico)
         {
             itemsMagicos.Add(itemMagico);
         }

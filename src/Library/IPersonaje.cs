@@ -11,9 +11,9 @@ namespace RoleplayGame
         public int VerVidaInicial();
         public int VerVida();
         public void CambiarVida(int vida);
-        void AgregarItemAtaque(ItemAtaque item);
+        void AgregarItemAtaque(IAtaque item);
         
-        void AgregarItemDefensa(ItemDefensa item);
+        void AgregarItemDefensa(IDefensa item);
         
         int ValorAtaque();
         void RecibirAtaque(IPersonaje ataque);
