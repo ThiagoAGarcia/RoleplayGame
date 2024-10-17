@@ -18,11 +18,12 @@ public class Troll : Personaje
 
     private void Gigante()
     {
-        if (EsGigante == true)
+        if (EsGigante)
         {
             Ataque += 10;
             Vida -= 30;
-            Nombre += "Gigante";
+            vidaInicial -= 30;
+            Nombre += " Gigante";
         }
     }
 }

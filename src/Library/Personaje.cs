@@ -5,8 +5,8 @@ using System.Collections;
 public class Personaje : IPersonaje
 {
     public string Nombre { get; set; }
-        public static int Vida;
-        public static int Ataque;
+        public int Vida;
+        public int Ataque;
        
 
         public int vidaInicial;

@@ -29,8 +29,8 @@ namespace RoleplayGameTests
 
             _curador = new Elfo("Legolas");
             Assert.AreEqual("Legolas", _curador.Nombre);
-            Assert.AreEqual(200, Elfo.Vida);
-            Assert.AreEqual(20, Elfo.Ataque);
+            Assert.AreEqual(200, _curador.Vida);
+            Assert.AreEqual(20, _curador.Ataque);
             Assert.AreEqual(100, _curador.Mana);
         }
 
@@ -62,14 +62,14 @@ namespace RoleplayGameTests
         [Test]
         public void TestCurar()
         {
-            Elfo.Vida = 180;
+            _curador.Vida = 180;
 
             _curador.Curar(15);
-            Assert.AreEqual(195, Elfo.Vida);
+            Assert.AreEqual(195, _curador.Vida);
 
             _curador.Curar(25);  
 
-            Assert.AreEqual(195, Elfo.Vida); 
+            Assert.AreEqual(195, _curador.Vida); 
         }
 
         [Test]
@@ -80,7 +80,7 @@ namespace RoleplayGameTests
             int valorAtaque = _curador.ValorAtaque();
 
 
-            Assert.AreEqual(60, valorAtaque); 
+            Assert.AreEqual(50, valorAtaque); 
         }
 
         [Test]
@@ -88,7 +88,7 @@ namespace RoleplayGameTests
         {
 
             _curador.RecibirAtaque(enano);
-            Assert.AreEqual(170, Elfo.Vida); 
+            Assert.AreEqual(170, _curador.Vida); 
 
         }
 
@@ -100,7 +100,7 @@ namespace RoleplayGameTests
             _curador.RecibirAtaque(enano);
 
 
-            Assert.AreEqual(200, Elfo.Vida);
+            Assert.AreEqual(200, _curador.Vida);
         }
     }
 }
