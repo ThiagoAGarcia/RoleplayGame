@@ -35,7 +35,7 @@ public class Personaje : IPersonaje
             {
                 if (item is IAtaque itemAtaque)
                 {
-                    valor += itemAtaque.Ataque;
+                    valor += itemAtaque.ObtenerAtaque();
                 }
             }
 
