@@ -11,7 +11,8 @@ public class Personaje : IPersonaje
 
         public int vidaInicial;
         
-        private ArrayList items = new ArrayList();
+        private List<ItemAtaque> items_ataque = new List<ItemAtaque>();
+        private List<ItemDefensa> items_defensa = new List<ItemDefensa>();
         
         public int VerVida()
         {
@@ -23,14 +24,14 @@ public class Personaje : IPersonaje
         }
         public int ItemsCount
         {
-            get { return items.Count; }
+            get { return items_ataque.Count() + items_defensa.Count(); }
         }
         
         public int ValorAtaque()
         {
             int valor = Ataque;
             
-            foreach (var item in items)
+            foreach (var item in items_ataque)
             {
                 if (item is ItemAtaque itemAtaque)
                 {
@@ -44,7 +45,7 @@ public class Personaje : IPersonaje
         {
             hechiceroAtacante.ValorAtaqueHechizos(hechizo);
             int defensaTotal = 0;
-            foreach (var item in items)
+            foreach (var item in items_defensa)
             {
                 if (item is ItemDefensa itemDefensa)
                 {
@@ -71,7 +72,7 @@ public class Personaje : IPersonaje
         {
             int defensaTotal = 0;
             
-            foreach (var item in items)
+            foreach (var item in items_defensa)
             {
                 if (item is ItemDefensa itemDefensa)
                 {
@@ -87,11 +88,11 @@ public class Personaje : IPersonaje
         
         public void AgregarItemAtaque(ItemAtaque item)
         {
-            items.Add(item);
+            items_ataque.Add(item);
         }
 
         public void AgregarItemDefensa(ItemDefensa item2)
         {
-            items.Add(item2);
+            items_defensa.Add(item2);
         }
 }
