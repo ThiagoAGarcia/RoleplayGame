@@ -9,8 +9,8 @@ namespace RoleplayGame.Tests
         Troll troll = new Troll("Gartinch", false);
         Enano enano = new Enano("Enaneirho");
         
-        ItemDefensa escudo = Items.Escudo;
-        ItemAtaque paloGigante = Items.PaloGigante;
+        IDefensa escudo = Items.Escudo;
+        IAtaque paloGigante = Items.PaloGigante;
 
         [SetUp]
         public void Setup()

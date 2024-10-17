@@ -5,14 +5,14 @@ using System.Collections;
 public class Personaje : IPersonaje
 {
     public string Nombre { get; set; }
-        public static int Vida;
-        public static int Ataque;
+        public int Vida;
+        public int Ataque;
        
 
         public int vidaInicial;
         
-        private List<ItemAtaque> items_ataque = new List<ItemAtaque>();
-        private List<ItemDefensa> items_defensa = new List<ItemDefensa>();
+        private List<IAtaque> items_ataque = new List<IAtaque>();
+        private List<IDefensa> items_defensa = new List<IDefensa>();
         
         public int VerVida()
         {
@@ -33,7 +33,7 @@ public class Personaje : IPersonaje
             
             foreach (var item in items_ataque)
             {
-                if (item is ItemAtaque itemAtaque)
+                if (item is IAtaque itemAtaque)
                 {
                     valor += itemAtaque.Ataque;
                 }
@@ -47,7 +47,7 @@ public class Personaje : IPersonaje
             int defensaTotal = 0;
             foreach (var item in items_defensa)
             {
-                if (item is ItemDefensa itemDefensa)
+                if (item is IDefensa itemDefensa)
                 {
                     defensaTotal += itemDefensa.Defensa;
                 }
@@ -74,7 +74,7 @@ public class Personaje : IPersonaje
             
             foreach (var item in items_defensa)
             {
-                if (item is ItemDefensa itemDefensa)
+                if (item is IDefensa itemDefensa)
                 {
                     defensaTotal += itemDefensa.Defensa;
                 }
@@ -86,12 +86,12 @@ public class Personaje : IPersonaje
             Console.WriteLine($"{Nombre} recibió {danioRecibido} puntos de daño de {ataque.Nombre}. Vida actual: {Vida}.");
         }
         
-        public void AgregarItemAtaque(ItemAtaque item)
+        public void AgregarItemAtaque(IAtaque item)
         {
             items_ataque.Add(item);
         }
 
-        public void AgregarItemDefensa(ItemDefensa item2)
+        public void AgregarItemDefensa(IDefensa item2)
         {
             items_defensa.Add(item2);
         }

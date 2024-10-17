@@ -9,10 +9,10 @@ namespace RoleplayGameTests
 
         Enano enano = new Enano("rancio");
         
-        ItemAtaque espada = Items.Espada;
-        ItemDefensa escudo = Items.Escudo;
-        ItemAtaque arco = Items.Arco;
-        ItemDefensa armadura = Items.Armadura;
+        IAtaque espada = Items.Espada;
+        IDefensa escudo = Items.Escudo;
+        IAtaque arco = Items.Arco;
+        IDefensa armadura = Items.Armadura;
 
         [SetUp]
         public void Setup()
@@ -29,8 +29,8 @@ namespace RoleplayGameTests
 
             _curador = new Elfo("Legolas");
             Assert.AreEqual("Legolas", _curador.Nombre);
-            Assert.AreEqual(200, Elfo.Vida);
-            Assert.AreEqual(20, Elfo.Ataque);
+            Assert.AreEqual(200, _curador.Vida);
+            Assert.AreEqual(20, _curador.Ataque);
             Assert.AreEqual(100, _curador.Mana);
         }
 
@@ -62,14 +62,14 @@ namespace RoleplayGameTests
         [Test]
         public void TestCurar()
         {
-            Elfo.Vida = 180;
+            _curador.Vida = 180;
 
-            _curador.Curar(15);
-            Assert.AreEqual(195, Elfo.Vida);
+            _curador.Curar(15, enano);
+            Assert.AreEqual(195, enano.Vida);
 
-            _curador.Curar(25);  
+            _curador.Curar(25, _curador);  
 
-            Assert.AreEqual(195, Elfo.Vida); 
+            Assert.AreEqual(195, _curador.Vida); 
         }
 
         [Test]
@@ -88,7 +88,7 @@ namespace RoleplayGameTests
         {
 
             _curador.RecibirAtaque(enano);
-            Assert.AreEqual(170, Elfo.Vida); 
+            Assert.AreEqual(170, _curador.Vida); 
 
         }
 
@@ -100,7 +100,7 @@ namespace RoleplayGameTests
             _curador.RecibirAtaque(enano);
 
 
-            Assert.AreEqual(200, Elfo.Vida);
+            Assert.AreEqual(200, _curador.Vida);
         }
     }
 }
