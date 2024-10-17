@@ -14,9 +14,20 @@ public class Personaje : IPersonaje
         private List<IAtaque> items_ataque = new List<IAtaque>();
         private List<IDefensa> items_defensa = new List<IDefensa>();
         
+        public int VerVidaInicial()
+        {
+            return vidaInicial;
+        }
+        
         public int VerVida()
         {
             return Vida;
+        }
+        
+        public void CambiarVida(int vida)
+        {
+            Vida = vida;
+            
         }
         public int VerAtaque()
         {
