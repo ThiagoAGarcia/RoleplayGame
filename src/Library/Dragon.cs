@@ -2,24 +2,37 @@
 {
     public class Dragon : Personaje
     {
-        public AtaquesDragon Ataques { get; set; }
+        private List<AtaquesDragon> Ataques  = new List<AtaquesDragon>();
 
-        public Dragon(string nombre, int vida, int ataque, AtaquesDragon ataques)
+        public Dragon(string nombre)
         {
-            this.Nombre = nombre;
-            this.Vida = vida;
-            this.Ataque = ataque;
-            this.Ataques = ataques;
+            Nombre = nombre;
+            Vida = 200;
+            Ataque = 20;
         }
 
-        public void UsarAtaqueFuego(IPersonaje objetivo)
-        {
-            this.Ataques.AtacarConFuego(objetivo, this);
-        }
+            public void AgregarAtaque(AtaquesDragon ataque)
+            {
+                Ataques.Add(ataque);
+            }
+            public void VerAtaques()
+            {
+                foreach (var ataque in Ataques)
+                {
+                    Console.WriteLine(ataque.Nombre);
+                }
+            }
 
-        public void UsarAtaqueCola(IPersonaje objetivo)
+        public void RealizarAtaque(IPersonaje objetivo, AtaquesDragon ataque)
         {
-            this.Ataques.AtacarConCola(objetivo, this);
+            if (Ataques.Contains(ataque))
+            {
+                objetivo.CambiarVida(objetivo.VerVida()-(Ataque + ataque.Ataque));
+            }
+            else
+            {
+                Console.WriteLine("El ataque no esta en tu lista de ataques");
+            }
         }
     }
 }

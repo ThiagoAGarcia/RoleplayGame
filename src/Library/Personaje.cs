@@ -4,7 +4,7 @@ using System.Collections;
 
 public class Personaje : IPersonaje
 {
-    public string Nombre { get; set; }
+        public string Nombre { get; set; }
         public int Vida;
         public int Ataque;
        

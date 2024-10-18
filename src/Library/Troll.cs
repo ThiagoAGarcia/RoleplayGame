@@ -7,23 +7,20 @@ public class Troll : Personaje
 {
     private bool EsGigante;
     
-    public Troll(string nombre, bool esGigante)
+
+public Troll(string nombre, bool esGigante)
     {
         this.Nombre = nombre;
         vidaInicial = 150;
         Vida = 150;
         Ataque = 15;
-        this.EsGigante = esGigante;
-    }
-
-    private void Gigante()
-    {
-        if (EsGigante)
+        EsGigante = esGigante;
+        if (esGigante)
         {
             Ataque += 10;
             Vida -= 30;
-            vidaInicial -= 30;
-            Nombre += " Gigante";
+            vidaInicial = Vida;
+            Nombre += "(Gigante)";
         }
     }
 }
