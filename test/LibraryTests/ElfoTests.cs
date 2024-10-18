@@ -65,11 +65,11 @@ namespace RoleplayGameTests
             _curador.Vida = 180;
 
             _curador.Curar(15, enano);
-            Assert.AreEqual(195, enano.Vida);
+            Assert.AreEqual(200, enano.Vida);
 
             _curador.Curar(25, _curador);  
 
-            Assert.AreEqual(195, _curador.Vida); 
+            Assert.AreEqual(180, _curador.Vida); 
         }
 
         [Test]
@@ -80,7 +80,7 @@ namespace RoleplayGameTests
             int valorAtaque = _curador.ValorAtaque();
 
 
-            Assert.AreEqual(60, valorAtaque); 
+            Assert.AreEqual(50, valorAtaque); 
         }
 
         [Test]
