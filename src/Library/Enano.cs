@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace RoleplayGame
 {
-    public class Enano : Personaje
+    public class Enano : PersonajeHero
     {
         public Enano(string nombre)
         {
@@ -11,6 +11,7 @@ namespace RoleplayGame
             Vida = 200;
             Ataque = 30;
             vidaInicial = 200;
+            PV = 0;
         }
     }
 }

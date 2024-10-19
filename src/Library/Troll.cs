@@ -3,7 +3,7 @@ using Microsoft.VisualBasic;
 
 namespace RoleplayGame;
 
-public class Troll : Personaje
+public class Troll : PersonajeEnemigo
 {
     private bool EsGigante;
     
@@ -15,6 +15,7 @@ public Troll(string nombre, bool esGigante)
         Vida = 150;
         Ataque = 15;
         EsGigante = esGigante;
+        ValorPV = 40;
         if (esGigante)
         {
             Ataque += 10;

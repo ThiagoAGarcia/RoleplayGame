@@ -1,7 +1,7 @@
 ﻿namespace RoleplayGame;
 
-public interface ICurador : IHechicero
+public interface ICurador : IHechiceroHero
 
 {
-    public void Curar(int curar, IPersonaje curado);
+    public void Curar(int curar, IPersonajeHero curado);
 }

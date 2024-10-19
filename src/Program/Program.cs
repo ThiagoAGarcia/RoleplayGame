@@ -7,18 +7,18 @@ namespace RoleplayGame
         static void Main(string[] args)
         {
             ICurador elfo = new Elfo("Legolas");
-            IPersonaje enano = new Enano("Gimli");
-            IHechicero mago = new Mago("Gandalf");
-            IHechicero magoOscuro = new Mago("Black Gandalf");
-            IPersonaje troll = new Troll("Scabbers", true);
+            IPersonajeHero enano = new Enano("Gimli");
+            IHechiceroHero mago = new Mago("Gandalf");
+            IHechiceroEnemigo magoOscuro = new MagoOscuro("Black Gandalf");
+            IPersonajeEnemigo troll = new Troll("Scabbers", true);
 
             IAtaque espada = Items.Espada;
             IDefensa escudo = Items.Escudo;
             IAtaque arco = Items.Arco;
             IDefensa armadura = Items.Armadura;
-            IItemMagico varita = Items.varita;
+            IItemMagicoHero varita = Items.varita;
             IAtaque paloGigante = Items.PaloGigante;
-            IItemMagico grimorio = Items.grimorio;
+            IItemMagicoEnemigo grimorio = Items.grimorio;
 
             elfo.AgregarItemAtaque(arco);
             enano.AgregarItemAtaque(espada);
@@ -36,16 +36,16 @@ namespace RoleplayGame
             Console.WriteLine("\nAtaques y hechizos:");
             
             int ataqueElfo = elfo.ValorAtaque();
-            enano.RecibirAtaque(elfo);
+            enano.RecibirAtaque(troll);
 
             int ataqueEnano = enano.ValorAtaque();
-            mago.RecibirAtaque(enano);
+            mago.RecibirAtaque(troll);
 
             int ataqueTroll = troll.ValorAtaque();
             elfo.RecibirAtaque(troll);
             
             Hechizo hechizo = Hechizo.BolaDeFuego;
-            elfo.RecibirHechizo(mago, hechizo);
+            elfo.RecibirHechizo(magoOscuro, hechizo);
 
             magoOscuro.ListarHechizos();
             

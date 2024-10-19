@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace RoleplayGame
 {
-    public class Mago : Personaje, IHechicero
+    public class Mago : PersonajeHero, IHechiceroHero
     {
         
 
@@ -11,7 +11,7 @@ namespace RoleplayGame
         
         public int ManaInicial;
         
-        private List<IItemMagico> itemsMagicos = new List<IItemMagico>();
+        private List<IItemMagicoHero> itemsMagicos = new List<IItemMagicoHero>();
 
         private List<Hechizo> hechizos = new List<Hechizo>();
         
@@ -41,6 +41,7 @@ namespace RoleplayGame
             vidaInicial = 150;
             Mana = 150;
             ManaInicial = 150;
+            PV = 0;
         }
 
         public string CargarMana(int mana)
@@ -60,9 +61,9 @@ namespace RoleplayGame
             hechizos.Add(hechizo);
         }
 
-        public void AgregarItemMagico(IItemMagico itemMagico)
+        public void AgregarItemMagico(IItemMagicoHero itemMagicoHero)
         {
-            itemsMagicos.Add(itemMagico);
+            itemsMagicos.Add(itemMagicoHero);
         }
         
         public int ValorAtaqueHechizos(Hechizo hechizo = null)

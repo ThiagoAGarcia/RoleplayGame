@@ -2,5 +2,5 @@
 
 public interface IMagico
 { 
-    void MejorarHechizos(IHechicero personaje);
+    void MejorarHechizos(IHechiceroHero personaje);
 }

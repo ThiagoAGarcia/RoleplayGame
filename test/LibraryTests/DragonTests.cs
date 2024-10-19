@@ -22,7 +22,7 @@ namespace RoleplayGameTests
         {
             AtaquesDragon ataquesDragon = new AtaquesDragon("Ataque Cola", 30);
             Dragon dragon = new Dragon("Smaug");
-            Personaje objetivo = new Personaje { Nombre = "Guerrero", Vida = 100, Ataque = 15 };
+            PersonajeHero objetivo = new PersonajeHero { Nombre = "Guerrero", Vida = 100, Ataque = 15 };
             dragon.AgregarAtaque(ataquesDragon);
             dragon.RealizarAtaque(objetivo, ataquesDragon);
 
@@ -36,7 +36,7 @@ namespace RoleplayGameTests
             
             AtaquesDragon Ataque2 = new AtaquesDragon("bomba", 50);
             Dragon dragon = new Dragon("Smaug");
-            Personaje objetivo = new Personaje { Nombre = "Caballero", Vida = 100, Ataque = 10 };
+            PersonajeHero objetivo = new PersonajeHero { Nombre = "Caballero", Vida = 100, Ataque = 10 };
             dragon.AgregarAtaque(ataquesDragon);
 
             dragon.RealizarAtaque(objetivo, ataquesDragon);
@@ -50,13 +50,13 @@ namespace RoleplayGameTests
         public void PersonajeRecibirAtaque_ReduceVidaCorrectamente()
         {
            
-            Personaje atacante = new Personaje { Nombre = "Orco", Vida = 80, Ataque = 20 };
-            Personaje defensor = new Personaje { Nombre = "Elfo", Vida = 100, Ataque = 15 };
+            PersonajeEnemigo atacante = new MagoOscuro("miguel") ;
+            PersonajeHero defensor = new PersonajeHero { Nombre = "Elfo", Vida = 100, Ataque = 15 };
 
             
             defensor.RecibirAtaque(atacante);
 
-            Assert.AreEqual(80, defensor.VerVida());
+            Assert.AreEqual(92, defensor.VerVida());
         }
     }
 }

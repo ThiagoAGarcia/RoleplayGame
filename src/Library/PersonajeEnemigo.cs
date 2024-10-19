@@ -1,13 +1,27 @@
 ﻿namespace RoleplayGame;
-using System;
-using System.Collections;
 
-public class Personaje : IPersonaje
+public class PersonajeEnemigo : IPersonajeEnemigo
 {
-        public string Nombre { get; set; }
+    public string Nombre { get; set; }
         public int Vida;
         public int Ataque;
-       
+
+        public int ValorPV;
+
+        public bool Muerto;
+        
+        public void ComprobarEstado()
+        {
+            if(Vida <= 0)
+            {
+                Muerto = true;
+            }
+        }
+
+        public bool VerEstado()
+        {
+            return Muerto;
+        }
 
         public int vidaInicial;
         
@@ -19,6 +33,10 @@ public class Personaje : IPersonaje
             return vidaInicial;
         }
         
+        public int ObtenerPv()
+        {
+            return ValorPV;
+        }
         public int VerVida()
         {
             return Vida;
@@ -52,9 +70,9 @@ public class Personaje : IPersonaje
 
             return valor;
         }
-        public void RecibirHechizo(IHechicero hechiceroAtacante, Hechizo hechizo)
+        public void RecibirHechizo(IHechiceroHero atacante, Hechizo hechizo)
         {
-            hechiceroAtacante.ValorAtaqueHechizos(hechizo);
+            atacante.ValorAtaqueHechizos(hechizo);
             int defensaTotal = 0;
             foreach (var item in items_defensa)
             {
@@ -64,22 +82,29 @@ public class Personaje : IPersonaje
                 }
             }
             
-            if (hechiceroAtacante.Mana >= hechizo.GastoMana)
+            if (atacante.Mana >= hechizo.GastoMana)
             {
-                hechiceroAtacante.Mana -= hechizo.GastoMana;
+                atacante.Mana -= hechizo.GastoMana;
                 
                 int danioRecibido = Math.Max(0, hechizo.Ataque - defensaTotal);
                 Vida -= danioRecibido;
+                
+                ComprobarEstado();
 
-                Console.WriteLine($"{Nombre} recibió {danioRecibido} puntos de daño del hechizo {hechizo.Nombre} de {hechiceroAtacante.Nombre}. Vida actual: {Vida}.");
+                if (VerEstado() == true)
+                {
+                    atacante.ConseguirPV(ValorPV);
+                } 
+                
+                Console.WriteLine($"{Nombre} recibió {danioRecibido} puntos de daño del hechizo {hechizo.Nombre} de {atacante.Nombre}. Vida actual: {Vida}.");
             }
             else
             {
-                Console.WriteLine($"{hechiceroAtacante.Nombre} intentó usar el hechizo {hechizo.Nombre}, pero no tiene suficiente mana.");
+                Console.WriteLine($"{atacante.Nombre} intentó usar el hechizo {hechizo.Nombre}, pero no tiene suficiente mana.");
             }
         }
 
-        public void RecibirAtaque(IPersonaje ataque)
+        public void RecibirAtaque(IPersonajeHero ataque)
         {
             int defensaTotal = 0;
             
@@ -93,6 +118,12 @@ public class Personaje : IPersonaje
             
             int danioRecibido = Math.Max(0, ataque.ValorAtaque() - defensaTotal);
             Vida -= danioRecibido;
+            
+            if (VerEstado() == true)
+            {
+                ataque.ConseguirPV(ValorPV);
+            } 
+
 
             Console.WriteLine($"{Nombre} recibió {danioRecibido} puntos de daño de {ataque.Nombre}. Vida actual: {Vida}.");
         }

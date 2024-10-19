@@ -2,7 +2,7 @@
 
 namespace RoleplayGame
 {
-    public interface IPersonaje
+    public interface IPersonajeEnemigo
     {
         string Nombre { get; set; }
         static int Vida;
@@ -16,8 +16,8 @@ namespace RoleplayGame
         void AgregarItemDefensa(IDefensa item);
         
         int ValorAtaque();
-        void RecibirAtaque(IPersonaje ataque);
+        void RecibirAtaque(IPersonajeHero ataque);
 
-        void RecibirHechizo(IHechicero hechiceroAtacante, Hechizo hechizo);
+        void RecibirHechizo(IHechiceroHero hechicerohEroAtacante, Hechizo hechizo);
     }
 }

@@ -5,7 +5,7 @@ namespace RoleplayGameTests
 {
     public class EnanoTests
     {
-        Mago mago = new Mago("pepe");
+        MagoOscuro mago = new MagoOscuro("pepe");
         Enano enano = new Enano("rancio");
         
         IAtaque espada = Items.Espada;
@@ -16,7 +16,7 @@ namespace RoleplayGameTests
         public void Setup()
         {
             enano = new Enano("Thorin");
-            mago = new Mago("Saruman");
+            mago = new MagoOscuro("Saruman");
             espada = Items.Espada;  
             escudo = Items.Escudo;  
         }
@@ -53,7 +53,7 @@ namespace RoleplayGameTests
         {
             enano.RecibirAtaque(mago);
 
-            Assert.AreEqual(190, enano.VerVida());
+            Assert.AreEqual(192, enano.VerVida());
         }
 
         [Test]

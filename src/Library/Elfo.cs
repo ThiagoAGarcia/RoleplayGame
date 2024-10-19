@@ -4,14 +4,14 @@ using System.Collections;
 namespace RoleplayGame
 {
 
-    public class Elfo : Personaje, ICurador
+    public class Elfo : PersonajeHero, ICurador
     {
     public int Mana { get; set; }
     public int ManaInicial;
 
     private List<Hechizo> hechizos = new List<Hechizo>();
     
-    private List<IItemMagico> itemsMagicos = new List<IItemMagico>();
+    private List<IItemMagicoHero> itemsMagicos = new List<IItemMagicoHero>();
 
     public int HechizosCount
     {
@@ -30,6 +30,7 @@ namespace RoleplayGame
             vidaInicial = 200;
             Mana = 100;
             ManaInicial = 100;
+            PV = 0;
         }
         public void ListarHechizos()
         {
@@ -65,12 +66,12 @@ namespace RoleplayGame
             hechizos.Add(hechizo);
         }
         
-        public void AgregarItemMagico(IItemMagico itemMagico)
+        public void AgregarItemMagico(IItemMagicoHero itemMagicoHero)
         {
-            itemsMagicos.Add(itemMagico);
+            itemsMagicos.Add(itemMagicoHero);
         }
 
-        public void Curar(int curar, IPersonaje Curado)
+        public void Curar(int curar, IPersonajeHero Curado)
         {
             if ((Curado.VerVida() + curar) > Curado.VerVidaInicial() || curar > 20)
             {

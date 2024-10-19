@@ -9,6 +9,8 @@ namespace RoleplayGameTests
 
         Enano enano = new Enano("rancio");
         
+        MagoOscuro magoOscuro = new MagoOscuro("Maguito");
+        
         IAtaque espada = Items.Espada;
         IDefensa escudo = Items.Escudo;
         IAtaque arco = Items.Arco;
@@ -87,8 +89,8 @@ namespace RoleplayGameTests
         public void TestRecibirAtaqueSinDefensa()
         {
 
-            _curador.RecibirAtaque(enano);
-            Assert.AreEqual(170, _curador.Vida); 
+            _curador.RecibirAtaque(magoOscuro);
+            Assert.That(_curador.Vida, Is.EqualTo(192)); 
 
         }
 
@@ -97,7 +99,7 @@ namespace RoleplayGameTests
         {
 
             _curador.AgregarItemDefensa(escudo);  
-            _curador.RecibirAtaque(enano);
+            _curador.RecibirAtaque(magoOscuro);
 
 
             Assert.AreEqual(200, _curador.Vida);

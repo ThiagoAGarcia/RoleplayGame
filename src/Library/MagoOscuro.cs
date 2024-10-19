@@ -1,12 +1,12 @@
 ﻿namespace RoleplayGame;
 
-public class MagoOscuro : Personaje, IHechicero
+public class MagoOscuro : PersonajeEnemigo, IHechiceroEnemigo
 {
        public int Mana { get; set; }
         
         public int ManaInicial;
         
-        private List<IItemMagico> itemsMagicos = new List<IItemMagico>();
+        private List<IItemMagicoEnemigo> itemsMagicos = new List<IItemMagicoEnemigo>();
 
         private List<Hechizo> hechizos = new List<Hechizo>();
         
@@ -37,6 +37,7 @@ public class MagoOscuro : Personaje, IHechicero
             vidaInicial = 180;
             Mana = 100;
             ManaInicial = Mana;
+            ValorPV = 70;
         }
         
         public string CargarMana(int mana)
@@ -56,7 +57,7 @@ public class MagoOscuro : Personaje, IHechicero
             hechizos.Add(hechizo);
         }
 
-        public void AgregarItemMagico(IItemMagico itemMagico)
+        public void AgregarItemMagico(IItemMagicoEnemigo itemMagico)
         {
             itemsMagicos.Add(itemMagico);
         }

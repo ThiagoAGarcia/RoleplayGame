@@ -1,6 +1,6 @@
 ﻿namespace RoleplayGame
 {
-    public class Dragon : Personaje
+    public class Dragon : PersonajeEnemigo
     {
         private List<AtaquesDragon> Ataques  = new List<AtaquesDragon>();
 
@@ -9,6 +9,7 @@
             Nombre = nombre;
             Vida = 200;
             Ataque = 20;
+            ValorPV = 80;
         }
 
             public void AgregarAtaque(AtaquesDragon ataque)
@@ -23,7 +24,7 @@
                 }
             }
 
-        public void RealizarAtaque(IPersonaje objetivo, AtaquesDragon ataque)
+        public void RealizarAtaque(IPersonajeHero objetivo, AtaquesDragon ataque)
         {
             if (Ataques.Contains(ataque))
             {
