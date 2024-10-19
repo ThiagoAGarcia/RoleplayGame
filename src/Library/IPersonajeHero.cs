@@ -22,5 +22,7 @@ namespace RoleplayGame
         void RecibirAtaque(IPersonajeEnemigo ataque);
 
         void RecibirHechizo(IHechiceroEnemigo atacante, Hechizo hechizo);
+        
+        List<IAtaque> ItemsAtaque { get; }
     }
 }

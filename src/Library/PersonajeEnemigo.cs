@@ -25,8 +25,8 @@ public class PersonajeEnemigo : IPersonajeEnemigo
 
         public int vidaInicial;
         
-        private List<IAtaque> items_ataque = new List<IAtaque>();
-        private List<IDefensa> items_defensa = new List<IDefensa>();
+        protected List<IAtaque> items_ataque = new List<IAtaque>();
+        protected List<IDefensa> items_defensa = new List<IDefensa>();
         
         public int VerVidaInicial()
         {
@@ -104,7 +104,7 @@ public class PersonajeEnemigo : IPersonajeEnemigo
             }
         }
 
-        public void RecibirAtaque(IPersonajeHero ataque)
+        public virtual void RecibirAtaque(IPersonajeHero ataque)
         {
             int defensaTotal = 0;
             
@@ -119,13 +119,14 @@ public class PersonajeEnemigo : IPersonajeEnemigo
             int danioRecibido = Math.Max(0, ataque.ValorAtaque() - defensaTotal);
             Vida -= danioRecibido;
             
+            Console.WriteLine($"{Nombre} recibió {danioRecibido} puntos de daño de {ataque.Nombre}. Vida actual: {Vida}.");
+            
             if (VerEstado() == true)
             {
                 ataque.ConseguirPV(ValorPV);
+                Console.WriteLine($"{Nombre} ha muerto y ha otorgado {ValorPV} puntos de vida a {ataque.Nombre}");
             } 
-
-
-            Console.WriteLine($"{Nombre} recibió {danioRecibido} puntos de daño de {ataque.Nombre}. Vida actual: {Vida}.");
+            
         }
         
         public void AgregarItemAtaque(IAtaque item)

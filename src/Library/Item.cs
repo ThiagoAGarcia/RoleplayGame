@@ -6,6 +6,8 @@ public class Item : IAtaque, IDefensa, IItemMagicoHero, IItemMagicoEnemigo
     public int Ataque { get; set; }
     public int Defensa { get; set; }
     
+    public bool EsMagico { get; set; }
+    
     public void MejorarHechizos(IHechiceroHero personaje)
     {
         personaje.subirAtaqueHechizos(Ataque);
