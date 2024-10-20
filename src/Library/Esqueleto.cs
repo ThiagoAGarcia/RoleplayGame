@@ -8,9 +8,9 @@ public class Esqueleto : PersonajeEnemigo
     {
         Nombre = nombre;
         Vida = 100;
-        Ataque = 10;
+        Ataque = 40;
         vidaInicial = 100;
-        ValorPV = 30;
+        ValorPV = 40;
     }
 
     
@@ -28,9 +28,9 @@ public class Esqueleto : PersonajeEnemigo
         
         foreach(var item  in ataque.ItemsAtaque)
         {
-            if(item is IItemMagicoHero itemMagico)
+            if(item is IItemMagicoHero)
             {
-                ;int danioRecibido = Math.Max(0, ataque.ValorAtaque() - defensaTotal);
+                int danioRecibido = Math.Max(0, ataque.ValorAtaque() - defensaTotal);
                 Vida -= danioRecibido;
                 
                 Console.WriteLine($"{Nombre} recibió {danioRecibido} puntos de daño de {ataque.Nombre}. Vida actual: {Vida}.");

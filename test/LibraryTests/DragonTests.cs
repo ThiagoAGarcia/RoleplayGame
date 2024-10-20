@@ -4,7 +4,7 @@ using RoleplayGame;
 namespace RoleplayGameTests
 {
     [TestFixture]
-    public class RoleplayGameTests
+    public class DragonTests
     {
         [Test]
         public void CrearDragon_ConVidaYAtaque_Correctos()
