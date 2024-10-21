@@ -37,7 +37,7 @@ namespace RoleplayGameTests
         }
 
         [Test]
-        public void TestCargarMana()
+        public void TestCargarManaCorrectamente()
         {
 
             _curador.Mana = 50;
@@ -46,8 +46,16 @@ namespace RoleplayGameTests
             Assert.AreEqual("Se cargo 50", resultado);
             Assert.AreEqual(100, _curador.Mana);
 
-            resultado = _curador.CargarMana(200);
+           
+        }
 
+        [Test]
+        public void TestCargarMasManaDelPosible()
+        {
+            _curador.Mana = 50;
+
+            var resultado = _curador.CargarMana(50);
+            resultado = _curador.CargarMana(200);
             Assert.AreEqual("No se puede cargar mas mana del que el personaje posee", resultado);
         }
 
