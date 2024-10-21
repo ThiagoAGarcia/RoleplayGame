@@ -13,8 +13,7 @@ namespace RoleplayGameTests
         
         IAtaque espada = Items.Espada;
         IDefensa escudo = Items.Escudo;
-        IAtaque arco = Items.Arco;
-        IDefensa armadura = Items.Armadura;
+        
 
         [SetUp]
         public void Setup()
