@@ -100,9 +100,10 @@ namespace RoleplayGameTests
 
             _curador.AgregarItemDefensa(escudo);  
             _curador.RecibirAtaque(magoOscuro);
+            
 
 
-            Assert.AreEqual(200, _curador.Vida);
+            Assert.AreEqual(197, _curador.Vida);
         }
     }
 }

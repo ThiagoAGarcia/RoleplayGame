@@ -6,6 +6,8 @@ public class EsqueletoTests
 {
     Esqueleto _esqueleto = new Esqueleto("esqueleto");
     Enano enano = new Enano("brok");
+    private Mago mago = new Mago("miguel");
+    
     IAtaque espada = Items.Espada;
     IDefensa escudo = Items.Escudo;
     
@@ -15,8 +17,11 @@ public class EsqueletoTests
     {
         _esqueleto = new Esqueleto("esqueleto");
         enano = new Enano("brok");
+        mago = new Mago("miguel");
         espada = Items.Espada;
         escudo = Items.Escudo;
+        mago.AgregarHechizo(Hechizo.BolaDeFuego);
+        
     }
 
     [Test]
@@ -49,5 +54,13 @@ public class EsqueletoTests
         enano.AgregarItemDefensa(escudo);
         _esqueleto.RecibirAtaque(enano);
         Assert.AreEqual(100, _esqueleto.Vida);
+    }
+
+    [Test]
+    public void TestRecibirHechizos()
+    {
+        
+        _esqueleto.RecibirHechizo(mago, Hechizo.BolaDeFuego);
+        Assert.AreEqual(50, _esqueleto.Vida);
     }
 }

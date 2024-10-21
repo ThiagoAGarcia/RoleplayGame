@@ -13,6 +13,7 @@ namespace RoleplayGame
         
         public int VerVidaInicial();
         public int VerVida();
+        public int VerAtaque();
         public void CambiarVida(int vida);
         void AgregarItemAtaque(IAtaque item);
         

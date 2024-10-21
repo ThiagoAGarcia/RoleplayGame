@@ -25,8 +25,8 @@ public class PersonajeEnemigo : IPersonajeEnemigo
 
         public int vidaInicial;
         
-        protected List<IAtaque> items_ataque = new List<IAtaque>();
-        protected List<IDefensa> items_defensa = new List<IDefensa>();
+        protected List<IAtaque> itemsAtaque = new List<IAtaque>();
+        protected List<IDefensa> itemsDefensa = new List<IDefensa>();
         
         public int VerVidaInicial()
         {
@@ -53,39 +53,39 @@ public class PersonajeEnemigo : IPersonajeEnemigo
         }
         public int ItemsCount
         {
-            get { return items_ataque.Count() + items_defensa.Count(); }
+            get { return itemsAtaque.Count() + itemsDefensa.Count(); }
         }
         
         public int ValorAtaque()
         {
             int valor = Ataque;
-            
-            foreach (var item in items_ataque)
+    
+            foreach (var item in itemsAtaque)
             {
-                if (item is IAtaque itemAtaque)
-                {
-                    valor += itemAtaque.ObtenerAtaque();
-                }
+                valor += item.ObtenerAtaque();
             }
 
             return valor;
         }
+
         public void RecibirHechizo(IHechiceroHero atacante, Hechizo hechizo)
         {
             atacante.ValorAtaqueHechizos(hechizo);
             int defensaTotal = 0;
-            foreach (var item in items_defensa)
+            foreach (var item in itemsDefensa)
             {
-                if (item is IDefensa itemDefensa)
-                {
-                    defensaTotal += itemDefensa.Defensa;
-                }
+                    defensaTotal += item.Defensa;
             }
             
             if (atacante.Mana >= hechizo.GastoMana)
             {
                 atacante.Mana -= hechizo.GastoMana;
                 
+                if (defensaTotal > hechizo.Ataque)
+                {
+                    defensaTotal = hechizo.Ataque;
+                }
+               
                 int danioRecibido = Math.Max(0, hechizo.Ataque - defensaTotal);
                 Vida -= danioRecibido;
                 
@@ -108,34 +108,32 @@ public class PersonajeEnemigo : IPersonajeEnemigo
         {
             int defensaTotal = 0;
             
-            foreach (var item in items_defensa)
+            foreach (var item in itemsDefensa)
             {
-                if (item is IDefensa itemDefensa)
-                {
-                    defensaTotal += itemDefensa.Defensa;
-                }
+                defensaTotal += item.Defensa;
             }
             
             int danioRecibido = Math.Max(0, ataque.ValorAtaque() - defensaTotal);
             Vida -= danioRecibido;
+           
             
             Console.WriteLine($"{Nombre} recibió {danioRecibido} puntos de daño de {ataque.Nombre}. Vida actual: {Vida}.");
             
             if (VerEstado() == true)
             {
                 ataque.ConseguirPV(ValorPV);
-                Console.WriteLine($"{Nombre} ha muerto y ha otorgado {ValorPV} puntos de vida a {ataque.Nombre}");
+                Console.WriteLine($"{Nombre} ha muerto y ha otorgado {ValorPV} puntos de victoria a {ataque.Nombre}");
             } 
             
         }
         
         public void AgregarItemAtaque(IAtaque item)
         {
-            items_ataque.Add(item);
+            itemsAtaque.Add(item);
         }
 
         public void AgregarItemDefensa(IDefensa item2)
         {
-            items_defensa.Add(item2);
+            itemsDefensa.Add(item2);
         }
 }

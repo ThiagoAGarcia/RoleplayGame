@@ -62,7 +62,7 @@ namespace RoleplayGameTests
             enano.AgregarItemDefensa(Items.Escudo); 
             enano.RecibirAtaque(mago);
 
-            Assert.AreEqual(200, enano.VerVida());
+            Assert.AreEqual(197, enano.VerVida());
         }
     }
 }

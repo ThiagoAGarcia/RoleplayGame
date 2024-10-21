@@ -31,7 +31,6 @@ namespace RoleplayGame
             mago.AgregarHechizo(Hechizo.BolaDeFuego);
             mago.AgregarHechizo(Hechizo.RayoDeHielo);
             magoOscuro.AgregarHechizo(Hechizo.BolaDeFuego);
-            
 
             Console.WriteLine("\nAtaques y hechizos:");
             
