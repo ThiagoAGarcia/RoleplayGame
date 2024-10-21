@@ -12,8 +12,6 @@ public class Esqueleto : PersonajeEnemigo
         vidaInicial = 100;
         ValorPV = 40;
     }
-
-    //Este recibir un ataque tiene un problema lo veremos despues en clase.
     public override void RecibirAtaque(IPersonajeHero ataque)
     {
         Vida -= 0;
