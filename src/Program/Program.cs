@@ -34,13 +34,10 @@ namespace RoleplayGame
 
             Console.WriteLine("\nAtaques y hechizos:");
             
-            int ataqueElfo = elfo.ValorAtaque();
             enano.RecibirAtaque(troll);
-
-            int ataqueEnano = enano.ValorAtaque();
+            
             mago.RecibirAtaque(troll);
-
-            int ataqueTroll = troll.ValorAtaque();
+            
             elfo.RecibirAtaque(troll);
             
             Hechizo hechizo = Hechizo.BolaDeFuego;
