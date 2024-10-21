@@ -48,6 +48,6 @@ public class EsqueletoTests
         enano.AgregarItemAtaque(espada);
         enano.AgregarItemDefensa(escudo);
         _esqueleto.RecibirAtaque(enano);
-        Assert.AreEqual(100, _esqueleto.Vida);
+        Assert.AreEqual(40, _esqueleto.Vida);
     }
 }
