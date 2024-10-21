@@ -3,7 +3,7 @@ namespace RoleplayGame;
 public class BattleEncounter
 {
     // El encuentro de combate se compone de una lista de héroes y una lista de enemigos, que se enfrentarán entre sí. 
-    // De forma tal que se cumplan las reglas para el mismo tomadas en Clase.
+    // De forma tal que se cumplan las reglas para el mismo tomadas del repo.
     // Se elimino que al final los personajes se curaran porque no tenia sentido, teniendo en cuenta que solo los Elfos podian.
     
     private List<PersonajeHero> heroes;
