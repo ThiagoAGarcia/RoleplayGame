@@ -6,11 +6,11 @@ namespace RoleplayGame
     {
         static void Main(string[] args)
         {
-            ICurador elfo = new Elfo("Legolas");
-            IPersonajeHero enano = new Enano("Gimli");
-            IHechiceroHero mago = new Mago("Gandalf");
-            IHechiceroEnemigo magoOscuro = new MagoOscuro("Black Gandalf");
-            IPersonajeEnemigo troll = new Troll("Scabbers", true);
+            Elfo elfo = new Elfo("Legolas");
+            Enano enano = new Enano("Gimli");
+            Mago mago = new Mago("Gandalf");
+            MagoOscuro magoOscuro = new MagoOscuro("Black Gandalf"); 
+            Troll troll = new Troll("Scabbers", true);
 
             IAtaque espada = Items.Espada;
             IDefensa escudo = Items.Escudo;
@@ -32,20 +32,9 @@ namespace RoleplayGame
             mago.AgregarHechizo(Hechizo.RayoDeHielo);
             magoOscuro.AgregarHechizo(Hechizo.BolaDeFuego);
 
-            Console.WriteLine("\nAtaques y hechizos:");
-            
-            enano.RecibirAtaque(troll);
-            
-            mago.RecibirAtaque(troll);
-            
-            elfo.RecibirAtaque(troll);
-            
-            Hechizo hechizo = Hechizo.BolaDeFuego;
-            elfo.RecibirHechizo(magoOscuro, hechizo);
-
-            magoOscuro.ListarHechizos();
-            
-            elfo.Curar(20, mago);
+           Console.WriteLine("Encuentro de combate:");
+            BattleEncounter encuentro = new BattleEncounter(new List<PersonajeHero> { elfo, enano, mago }, new List<PersonajeEnemigo> { troll, magoOscuro });
+            encuentro.DoEncounter();
         }
     }
 }
